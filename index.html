@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,80 @@
     <link rel="stylesheet" href="./assets/style.css">
     <title>Budget Planner</title>
 </head>
+
 <body>
+
+<!--___________________________Header________________________________-->
+    <header>
+        <section class="nav">
+            <nav>
+                <ul>
+                    <!-- potential logo -->
+                    <!-- <li><a href="#">Logo</a></li> -->
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Set Budget</a></li>
+                    <li><a href="#">Overview</a></li>
+                    <li><a href="#">Spendings</a></li>
+                </ul>
+            </nav>
+        </section>
+        <section class="title">
+            <h1>Budget Planner</h1>
+        </section>
+
+<!--___________________________Input________________________________-->
+        <section class="body">
+            <section class="input">
+                <section class="budget-set">
+                    <button>
+                       Set Budget <!-- This should open a modal to enter proper budget numbers -->
+                    </button>
+                </section>
+
+                <section class="overview">
+                    <h2>Overview</h2>
+                    <div class="overview-text">
+                        <p>Text place holder to show percentage of amount spent.</p>
+                        <p>This is something to write saying YOU GOT THIS!</p>
+                    </div>
+                    <p>THIS SHOULD BE A PIE CHART WITH CORRESPONDING INFORMATION</p>
+                </section>
+
+                <section class="receipts">
+                    <ul>
+                        <li>Item: 50$</li>
+                        <li>Items: 120$</li>
+                        <li>Purchase: 300$</li>
+                    </ul>
+                    <p>TOTAL SPENT:________________________</p>
+                    <button class="receipt-slip">
+                        Add Item <!-- This should open a modal to enter proper budget numbers -->
+                    </button>
+                </section>
+            </section>
+<!--___________________________Goals-Overview______________________-->
+            <section class="goal-overview">
+                <div class="goals">
+                    <h2>Budget Goals</h2>
+                    <ul>
+                        <li>Goal One</li>
+                        <li>Goal Two</li>
+                        <li>Goal Three</li>
+                        <li>Goal Four</li>
+                        <li>Goal Five</li>
+                    </ul>
+                    <input type="text" placeholder="Enter your goals!">
+                </div>
+
+            </section>
+
+        </section>
+
+        <footer>
+            <p>This is footer, edit me to be as needed.</p>
+        </footer>
+    </header>
     <script src="./assets/script.js"></script>
 </body>
+
 </html>
