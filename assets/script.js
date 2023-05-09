@@ -1,6 +1,10 @@
 //__________________Global Variables____________________
 const budget = document.getElementById("budget"); //example
+const today = document.getElementById("date");
 
+
+//__________________Today's Date________________________
+today.textContent = "Today is " + dayjs().format('MMMM D, YYYY');
 
 //__________________Event-Listeners_____________________
 //__________________Set-Budget-Button___________________
