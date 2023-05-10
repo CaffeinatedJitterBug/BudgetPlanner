@@ -35,61 +35,75 @@
             </div>
         </section>
     </header>
-        
-        <!--___________________________Input________________________________-->
-        <section class="body">
-            <section class="inputBudget">
-                <section class="budget-set">
-                    <form action="">
-                        <div class="control">
-                            <input class="input set-budget" type="number" placeholder="Enter amount of money you have!">
-                            <!-- make sure to accept number only and allow float point -->
-                            <input class="input set-saving" type="number" placeholder="Enter amount of saving in % form!">
-                            <button class="button is-primary">Submit</button> <!--Ensure to prevent default-->
-                          </div>
-                    </form>
-                </section>
+    <!--___________________________Date________________________________-->
+    <section class="section container">
+        <p id="date"></p>
+    </section>
 
-   
+    <!--___________________________Input________________________________-->
+    <section class="body">
+        <section class="inputBudget section"></section>
 
-            <section class="overview">
+        <div class="container">
+            <section class="overview column is-8">
                 <h2>Overview</h2>
                 <div class="overview-text">
                     <p>Text place holder to show percentage of amount spent.</p>
                     <p>This is something to write saying YOU GOT THIS!</p>
                 </div>
-                <p>THIS SHOULD BE A PIE CHART WITH CORRESPONDING INFORMATION</p>
-            </section>
-
-            <section class="receipts">
-                <ul>
-                    <li>Item: 50$</li>
-                    <li>Items: 120$</li>
-                    <li>Purchase: 300$</li>
-                </ul>
-                <p>TOTAL SPENT:________________________</p>
-                <button class="receipt-slip js-modal-trigger" data-target="budget-modal">
-                    Add Item <!-- This should open a modal to enter proper budget numbers -->
-                </button>
-                <div id="budget-modal" class="modal">
-                    <div class="modal-background"></div>
-                    <div class="modal-content">
-                        <form>
-                            <label for="name-item">Budget item name</label>
-                            <input type="text" id="name-item">
-                            <label for="item-amount">Amount spent</label>
-                            <input type="text" id="item-amount">
-                            <input type="file" id="receipt">
-                            <input type="submit" id="submit">
-                        </form>>
-                    </div>
-                    <button class="modal-close is-large" aria-label="close"></button>
+                <div id="pie-chart-container">
+                    <canvas id="pie-chart"></canvas>
                 </div>
             </section>
+        </div>
+
+        <div class="container">
+            <section class="budget-set column is-2">
+                <form action="">
+                    <div class="control">
+                        <input class="input set-budget" type="number" placeholder="Enter amount of money you have!">
+                        <!-- make sure to accept number only and allow float point -->
+                        <input class="input set-saving" type="number" placeholder="Enter amount of saving in % form!">
+                        <button class="button is-primary">Submit</button> <!--Ensure to prevent default-->
+                    </div>
+                </form>
+            </section>
+        </div>
+
+        <section class="section"> <!--This section holds both inputs as a group for layout-->
+            <div class="container">
+                <section class="receipts column is-4">
+                    <ul>
+                        <li>Item: 50$</li>
+                        <li>Items: 120$</li>
+                        <li>Purchase: 300$</li>
+                    </ul>
+                    <p>TOTAL SPENT:________________________</p>
+                    <button class="receipt-slip js-modal-trigger" data-target="budget-modal">
+                        Add Item <!-- This should open a modal to enter proper budget numbers -->
+                    </button>
+                    <div id="budget-modal" class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            <form>
+                                <label for="name-item">Budget item name</label>
+                                <input type="text" id="name-item">
+                                <label for="item-amount">Amount spent</label>
+                                <input type="text" id="item-amount">
+                                <input type="file" id="receipt">
+                                <input type="submit" id="submit">
+                            </form>>
+                        </div>
+                        <button class="modal-close is-large" aria-label="close"></button>
+                    </div>
+                </section>
+            </div>
         </section>
-        <!--___________________________Goals-Overview______________________-->
-        <section class="goal-overview">
-            <div class="goals">
+    </section>
+    <!--___________________________Goals-Overview______________________-->
+    <section class="goal-overview section">
+        <div class="container">
+            <section class="goals column">
                 <h2>Budget Goals</h2>
                 <ul>
                     <li>Goal One</li>
@@ -99,9 +113,11 @@
                     <li>Goal Five</li>
                 </ul>
                 <input type="text" placeholder="Enter your goals!">
-            </div>
+            </section>
+        </div>
 
-            <div class="find-advisor">
+        <div class="container">
+            <section class="find-advisor column">
                 <h2>Find an Advisor</h2>
                 <p>Find an advisor to help you with your budgeting needs.</p>
                 <label for="location">Current City:</label>
@@ -112,34 +128,39 @@
                     <p id="advisorAddress"></p>
                     <p id="advisorPhone"></p>
                 </div>
-            </div>
-
-        </section>
+            </section>
+        </div>
 
     </section>
 
-    <footer class="card-footer">
-        <nav>
-            <div class="card">
-                <div class="card-content">
-                    <p class="title">
-                        “A really cool motivational quote for people who read motivational quotes about budgeting.”
-                    </p>
-                    <p class="subtitle">
-                        Cool Team
-                    </p>
-                </div>
-                <ul>
-                    <li class="card-footer-item"><a href="#">Home</a></li>
-                    <li class="card-footer-item"><a href="#">Set Budget</a></li>
-                    <li class="card-footer-item"><a href="#">Overview</a></li>
-                    <li class="card-footer-item"><a href="#">Spendings</a></li>
-                </ul>
-        </nav>
-    </footer>
+    </section>
+
+    <div class="section container">
+        <footer class="card-footer">
+            <nav>
+                <div class="card">
+                    <div class="card-content">
+                        <p class="title">
+                            “A really cool motivational quote for people who read motivational quotes about budgeting.”
+                        </p>
+                        <p class="subtitle">
+                            Cool Team
+                        </p>
+                    </div>
+                    <ul>
+                        <li class="card-footer-item"><a href="#">Home</a></li>
+                        <li class="card-footer-item"><a href="#">Set Budget</a></li>
+                        <li class="card-footer-item"><a href="#">Overview</a></li>
+                        <li class="card-footer-item"><a href="#">Spendings</a></li>
+                    </ul>
+            </nav>
+        </footer>
+    </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-tooltip"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script src="./assets/script.js"></script>
 </body>
