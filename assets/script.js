@@ -10,47 +10,47 @@ today.textContent = "Today is " + dayjs().format('MMMM D, YYYY');
 document.addEventListener('DOMContentLoaded', () => {
     // Functions to open and close a modal
     function openModal($el) {
-      $el.classList.add('is-active');
+        $el.classList.add('is-active');
     }
-  
+
     function closeModal($el) {
-      $el.classList.remove('is-active');
+        $el.classList.remove('is-active');
     }
-  
+
     function closeAllModals() {
-      (document.querySelectorAll('.modal') || []).forEach(($modal) => {
-        closeModal($modal);
-      });
+        (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+            closeModal($modal);
+        });
     }
-  
+
     // Add a click event on buttons to open a specific modal
     (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
-      const modal = $trigger.dataset.target;
-      const $target = document.getElementById(modal);
-  
-      $trigger.addEventListener('click', () => {
-        openModal($target);
-      });
+        const modal = $trigger.dataset.target;
+        const $target = document.getElementById(modal);
+
+        $trigger.addEventListener('click', () => {
+            openModal($target);
+        });
     });
-  
+
     // Add a click event on various child elements to close the parent modal
     (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
-      const $target = $close.closest('.modal');
-  
-      $close.addEventListener('click', () => {
-        closeModal($target);
-      });
+        const $target = $close.closest('.modal');
+
+        $close.addEventListener('click', () => {
+            closeModal($target);
+        });
     });
-  
+
     // Add a keyboard event to close all modals
     document.addEventListener('keydown', (event) => {
-      const e = event || window.event;
-  
-      if (e.keyCode === 27) { // Escape key
-        closeAllModals();
-      }
+        const e = event || window.event;
+
+        if (e.keyCode === 27) { // Escape key
+            closeAllModals();
+        }
     });
-  });
+});
 //__________________Set-Budget-Button___________________
 //Add event listener to the set budget button
 //This should set the budget and display it on the page
@@ -69,6 +69,75 @@ document.addEventListener('DOMContentLoaded', () => {
 //Should display the graph on the page with all the data from the three sources (budget, expenses, savings)
 //Graph should update in appearance based on those three data points
 
+
+//_______________Find An Advisor_________________
+
+function mapquestRadiusSearch(apiKey, location) {
+
+    const geocodeUrl = "http://www.mapquestapi.com/geocoding/v1/address?key=" + apiKey + "&location=" + location;
+    fetch(geocodeUrl)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (geocodeData) {
+            const latitude = geocodeData.results[0].locations[0].latLng.lat;
+            const longitude = geocodeData.results[0].locations[0].latLng.lng;
+
+
+            const searchUrl = "http://www.mapquestapi.com/search/v2/radius?key=" + apiKey + "&origin=" + latitude + "," + longitude + "&radius=100";
+
+            fetch(searchUrl)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (searchData) {
+                    retrieveAdvisors(searchData)
+                    console.log(searchData)
+                    return searchData;
+                });
+
+
+
+            function retrieveAdvisors(searchData) {
+                for (let i = 0; i < searchData.searchResults.length; i++) {
+                    const result = searchData.searchResults[i].name;
+                    const address = searchData.searchResults[i].fields.address;
+                    const city = searchData.searchResults[i].fields.city;
+                    const state = searchData.searchResults[i].fields.state;
+                    const number = searchData.searchResults[i].fields.phone;
+                    let cleanNumber = number.replace(/\D/g, ''); //The internet is wonderful.
+                    let phone = cleanNumber.slice(1, 4) + '-' + cleanNumber.slice(4, 7) + '-' + cleanNumber.slice(7);
+
+                    if (result.includes("Financial" || "Advisor" || "Services")) {
+
+                        const businessName = result;
+                        const businessAddress = address + ' ' + city + ', ' + state;
+                        const businessPhone = phone;
+
+                        const advisorName = document.getElementById('advisorName');
+                        const advisorAdress = document.getElementById('advisorAddress');
+                        const advisorPhone = document.getElementById('advisorPhone');
+
+                        advisorName.textContent = businessName;
+                        advisorAdress.textContent = businessAddress;
+                        advisorPhone.textContent = businessPhone;
+                    };
+                }
+            }
+
+
+        });
+}
+
+const searchBtn = document.getElementById('advisorSearch')
+
+searchBtn.addEventListener('click', function () {
+    const apiKey = "RNllwWWXiyhm721laLx5JSKyaoFO4G2b";
+    const locationInput = document.getElementById("location");
+    const location = locationInput.value;
+
+    mapquestRadiusSearch(apiKey, location);
+});
 
 
 
