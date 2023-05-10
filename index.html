@@ -59,9 +59,22 @@
                         <li>Purchase: 300$</li>
                     </ul>
                     <p>TOTAL SPENT:________________________</p>
-                    <button class="receipt-slip">
+                    <button class="receipt-slip js-modal-trigger" data-target="budget-modal">
                         Add Item <!-- This should open a modal to enter proper budget numbers -->
                     </button>
+                    <div id="budget-modal" class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                          <form>
+                            <label for="name-item">Budget item name</label>
+                            <input type="text" id="name-item">
+                            <label for="item-amount">Amount spent</label>
+                            <input type="text" id="item-amount">
+                            <input type="file" id="receipt">
+                          </form>>
+                        </div>
+                        <button class="modal-close is-large" aria-label="close"></button>
+                    </div>
                 </section>
             </section>
             <!--___________________________Goals-Overview______________________-->
