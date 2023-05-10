@@ -68,6 +68,49 @@ document.addEventListener('DOMContentLoaded', () => {
 //Function related to the graph display API
 //Should display the graph on the page with all the data from the three sources (budget, expenses, savings)
 //Graph should update in appearance based on those three data points
+//Display the graph on the page using chart.js
+document.addEventListener('DOMContentLoaded', function() {
+    var ctx = document.getElementById('pie-chart').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['Money Left', 'Savings', 'Money Spent'],
+        datasets: [{
+          data: [1000, 500, 700], // data should be replaced with the data from the three sources
+          // data: [budgetLeft, savings, expenses]
+          // budgetLeft = budget - expenses - savings
+          // savings = budget * saving% transformed from whole number to decimal 0.00 (4% = 0.04)
+          backgroundColor: [ // change colors here to match theme
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(75, 192, 192, 0.7)',
+            'rgba(255, 99, 132, 0.7)'
+          ],
+          borderColor: [
+            'rgba(54, 162, 235, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(255, 99, 132, 1)'
+          ],
+          borderWidth: 1.5
+        }]
+      },
+      options: {
+        plugins: {
+          datalabels: {
+            color: '#fff',
+            formatter: function(value, context) {
+              return context.chart.data.labels[context.dataIndex];
+            }
+          }
+        },
+        reponsive: true,
+        maintainAspectRatio: true,
+        legend: {
+          display: false
+        }
+      }
+    });
+  });
+
 
 
 //_______________Find An Advisor_________________

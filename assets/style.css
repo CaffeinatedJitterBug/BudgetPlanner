@@ -4,12 +4,17 @@
     box-sizing: border-box;
 }
 
+/*___________________________Pie Chart_____________________ */
+canvas {
+    max-width: 400px;
+    margin: 4em auto;
+}
+
 /*___________________________Global_____________________ */
 h1 {
     color: #02425c;
     font-size: 4.8em;
 }
-
 
 /*___________________________Header_____________________ */
 .custom-list-spacing {
