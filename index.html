@@ -33,14 +33,19 @@
             <h1>Budget Planner</h1>
             <p id="date"></p>
         </section>
-
+    </header>
+        
         <!--___________________________Input________________________________-->
         <section class="body">
             <section class="inputBudget">
                 <section class="budget-set">
-                    <button>
-                        Set Budget <!-- This should open a modal to enter proper budget numbers -->
-                    </button>
+                    <form action="">
+                        <div class="control">
+                            <input class="input set-budget" type="text" placeholder="Enter amount of money you have!">
+                            <input class="input set-saving" type="text" placeholder="Enter amount of saving in % form!">
+                            <button class="button is-primary">Submit</button> <!--Ensure to prevent default-->
+                          </div>
+                    </form>
                 </section>
 
                 <section class="overview">
@@ -85,7 +90,9 @@
         <footer>
             <p>This is footer, edit me to be as needed.</p>
         </footer>
-    </header>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script src="./assets/script.js"></script>
 </body>
