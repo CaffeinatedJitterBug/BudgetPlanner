@@ -17,10 +17,27 @@ h1 {
 }
 
 /*___________________________Header_____________________ */
-.custom-list-spacing {
+
+.nav {
+    border-radius: 5px;
+}
+
+.list-item li {
+    /*li-background*/
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    background-color: #e9f5f6;
+    /*li-border*/
+    border: #3bc0f9 2px solid;
+    /*li-text-style*/
+    color: #04245c;
+    font-weight: 600;
+    /*li-spacing*/
     gap: 20px;
     margin-right: 20px;
 }
+
+
 
 .header-title {
     height: 17em;
@@ -30,6 +47,7 @@ h1 {
     display: flex;
 }
 
+
 .center-content {
     display: flex;
     flex-direction: column;
@@ -37,3 +55,4 @@ h1 {
     justify-content: center;
     text-align: center;
 }
+
