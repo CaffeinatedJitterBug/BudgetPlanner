@@ -58,33 +58,37 @@
                 </section>
             </div>
 
-            <div class="container is-flex is-justify-content-center is-align-items-center">
-                <section class="budget-set column is-8">
+            <div class="container is-flex is-flex-direction-column is-align-items-center">
+                <section class="budget-set column is-5">
                     <form action="">
                         <div class="control">
                             <input class="input set-budget" type="number" placeholder="Enter amount of money you have!">
                             <!-- make sure to accept number only and allow float point -->
                             <input class="input set-saving" type="number"
                                 placeholder="Enter amount of saving in % form!">
-                            <button class="button is-primary">Submit</button> <!--Ensure to prevent default-->
+                            <div class="center-content">
+                                <button class="button is-primary">Submit</button>
+                            </div>
+                            <!--Ensure to prevent default-->
                         </div>
                     </form>
                 </section>
-            </div>
 
-            <section class="section is-flex is-justify-content-center is-align-items-center">
-                <!--This section holds both inputs as a group for layout-->
-                <div class="container">
-                    <section class="receipts column is-12">
+
+                <section class="section is-flex is-justify-content-center">
+                    <!--This section holds both inputs as a group for layout-->
+                    <section class="receipts column is-10">
                         <ul>
                             <li>Item: 50$</li>
                             <li>Items: 120$</li>
                             <li>Purchase: 300$</li>
                         </ul>
                         <p>TOTAL SPENT:________________________</p>
-                        <button class="receipt-slip js-modal-trigger" data-target="budget-modal">
-                            Add Item <!-- This should open a modal to enter proper budget numbers -->
-                        </button>
+                        <div class="center-content">
+                            <button class="receipt-slip js-modal-trigger button is-primary" data-target="budget-modal">
+                                Add Item <!-- This should open a modal to enter proper budget numbers -->
+                            </button>
+                        </div>
                         <div id="budget-modal" class="modal">
                             <div class="modal-background"></div>
                             <div class="modal-content">
@@ -100,9 +104,9 @@
                             <button class="modal-close is-large" aria-label="close"></button>
                         </div>
                     </section>
-                </div>
-            </section>
-        </div>
+            </div>
+    </section>
+    </div>
     </section>
     <!--___________________________Goals-Overview______________________-->
     <section class="goal-overview section">
@@ -132,7 +136,7 @@
                             <label for="location">Search Area:</label>
                             <input type="text" id="location" placeholder="ex. 'Boston, MA'">
                         </div>
-                        <button id="advisorSearch">Find Advisor</button>
+                        <button id="advisorSearch" class="button is-primary">Find Advisor</button>
                         <div id="advisorInfor">
                             <h3 id="advisorName"></h3>
                             <p id="advisorAddress"></p>
