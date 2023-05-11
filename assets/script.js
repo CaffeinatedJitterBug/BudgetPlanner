@@ -2,7 +2,10 @@
 const budget = document.getElementById("budget"); //example
 const today = document.getElementById("date");
 const ocrKey = 'K86624004988957';
-
+//HTML elements.
+const setBudget = document.querySelector(".set-budget");
+const setSavings = document.querySelector(".set-saving");
+const budgetInput = document.querySelector(".budget-button");
 //__________________Today's Date________________________
 today.textContent = "Today is " + dayjs().format('MMMM D, YYYY');
 
@@ -52,11 +55,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 //__________________Set-Budget-Button___________________
-//Add event listener to the set budget button
-//This should set the budget and display it on the page
-//Append it to the graph so that it can be displayed appropriately
-// Set savings to 4% of the budget
-//This should add the budget to the local storage
+//Michael Tranquillo
+budgetInput.addEventListener("click", function (event) {
+  event.preventDefault();
+  const budget = setBudget.value;
+  const savings = setSavings.value;
+  // savingsAmount = will convert the budget number into the savings percentage from the whole number you chose.
+  // toFixed(2) = will round the number to two decimal places.
+  const savingsAmount = (Math.floor(budget / 100) * savings).toFixed(2);
+  // console.log(budget);
+  // console.log(savingsAmount);
+});
+
+
+
 //__________________Add-Expense-Button__________________
 //Add event listener to the add expense button
 //This should update the graph accordingly
