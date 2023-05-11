@@ -44,91 +44,107 @@
     <section class="body">
         <section class="inputBudget section"></section>
 
-        <div class="container">
-            <section class="overview column is-8">
-                <h2>Overview</h2>
-                <div class="overview-text">
-                    <p>Text place holder to show percentage of amount spent.</p>
-                    <p>This is something to write saying YOU GOT THIS!</p>
-                </div>
-                <div id="pie-chart-container">
-                    <canvas id="pie-chart"></canvas>
-                </div>
-            </section>
-        </div>
-
-        <div class="container">
-            <section class="budget-set column is-2">
-                <form action="">
-                    <div class="control">
-                        <input class="input set-budget" type="number" placeholder="Enter amount of money you have!">
-                        <!-- make sure to accept number only and allow float point -->
-                        <input class="input set-saving" type="number" placeholder="Enter amount of saving in % form!">
-                        <button class="button is-primary">Submit</button> <!--Ensure to prevent default-->
-                    </div>
-                </form>
-            </section>
-        </div>
-
-        <section class="section"> <!--This section holds both inputs as a group for layout-->
+        <div class="container is-flex">
             <div class="container">
-                <section class="receipts column is-4">
-                    <ul>
-                        <li>Item: 50$</li>
-                        <li>Items: 120$</li>
-                        <li>Purchase: 300$</li>
-                    </ul>
-                    <p>TOTAL SPENT:________________________</p>
-                    <button class="receipt-slip js-modal-trigger" data-target="budget-modal">
-                        Add Item <!-- This should open a modal to enter proper budget numbers -->
-                    </button>
-                    <div id="budget-modal" class="modal">
-                        <div class="modal-background"></div>
-                        <div class="modal-content">
-                            <form>
-                                <label for="name-item">Budget item name</label>
-                                <input type="text" id="name-item">
-                                <label for="item-amount">Amount spent</label>
-                                <input type="text" id="item-amount">
-                                <input type="file" id="receipt">
-                                <input type="submit" id="submit">
-                            </form>>
-                        </div>
-                        <button class="modal-close is-large" aria-label="close"></button>
+                <section class="overview column is-12">
+                    <h2>Overview</h2>
+                    <div class="overview-text">
+                        <p>Text place holder to show percentage of amount spent.</p>
+                        <p>This is something to write saying YOU GOT THIS!</p>
+                    </div>
+                    <div id="pie-chart-container">
+                        <canvas id="pie-chart"></canvas>
                     </div>
                 </section>
             </div>
-        </section>
+
+            <div class="container is-flex is-flex-direction-column is-align-items-center">
+                <section class="budget-set column is-5">
+                    <form action="">
+                        <div class="control">
+                            <input class="input set-budget" type="number" placeholder="Enter amount of money you have!">
+                            <!-- make sure to accept number only and allow float point -->
+                            <input class="input set-saving" type="number"
+                                placeholder="Enter amount of saving in % form!">
+                            <div class="center-content">
+                                <button class="button is-primary">Submit</button>
+                            </div>
+                            <!--Ensure to prevent default-->
+                        </div>
+                    </form>
+                </section>
+
+
+                <section class="section is-flex is-justify-content-center">
+                    <!--This section holds both inputs as a group for layout-->
+                    <section class="receipts column is-10">
+                        <ul>
+                            <li>Item: 50$</li>
+                            <li>Items: 120$</li>
+                            <li>Purchase: 300$</li>
+                        </ul>
+                        <p>TOTAL SPENT:________________________</p>
+                        <div class="center-content">
+                            <button class="receipt-slip js-modal-trigger button is-primary" data-target="budget-modal">
+                                Add Item <!-- This should open a modal to enter proper budget numbers -->
+                            </button>
+                        </div>
+                        <div id="budget-modal" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <form>
+                                    <label for="name-item">Budget item name</label>
+                                    <input type="text" id="name-item">
+                                    <label for="item-amount">Amount spent</label>
+                                    <input type="text" id="item-amount">
+                                    <input type="file" id="receipt">
+                                    <input type="submit" id="submit">
+                                </form>>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                    </section>
+            </div>
+    </section>
+    </div>
     </section>
     <!--___________________________Goals-Overview______________________-->
     <section class="goal-overview section">
-        <div class="container">
-            <section class="goals column">
-                <h2>Budget Goals</h2>
-                <ul>
-                    <li>Goal One</li>
-                    <li>Goal Two</li>
-                    <li>Goal Three</li>
-                    <li>Goal Four</li>
-                    <li>Goal Five</li>
-                </ul>
-                <input type="text" placeholder="Enter your goals!">
-            </section>
-        </div>
+        <div class="container is-flex is-justify-content-center">
+            <div class="container">
+                <section class="goals column is-flex is-justify-content-center">
+                    <div class="center-content">
+                        <h2>Budget Goals</h2>
+                        <ul>
+                            <li>Goal One</li>
+                            <li>Goal Two</li>
+                            <li>Goal Three</li>
+                            <li>Goal Four</li>
+                            <li>Goal Five</li>
+                        </ul>
+                        <input type="text" placeholder="Enter your goals!">
+                    </div>
+                </section>
+            </div>
 
-        <div class="container">
-            <section class="find-advisor column">
-                <h2>Find an Advisor</h2>
-                <p>Find an advisor to help you with your budgeting needs.</p>
-                <label for="location">Current City:</label>
-                <input type="text" id="location" placeholder="ex. 'Boston, MA'">
-                <button id="advisorSearch">Find Advisor</button>
-                <div id="advisorInfor">
-                    <h3 id="advisorName"></h3>
-                    <p id="advisorAddress"></p>
-                    <p id="advisorPhone"></p>
-                </div>
-            </section>
+            <div class="container is-flex is-justify-content-center">
+                <section class="find-advisor column is-flex is-justify-content-center">
+                    <div class="center-content">
+                        <h2>Find an Advisor</h2>
+                        <p>Find an advisor to help you with your budgeting needs.</p>
+                        <div class="is-flex-direction-column">
+                            <label for="location">Search Area:</label>
+                            <input type="text" id="location" placeholder="ex. 'Boston, MA'">
+                        </div>
+                        <button id="advisorSearch" class="button is-primary">Find Advisor</button>
+                        <div id="advisorInfor">
+                            <h3 id="advisorName"></h3>
+                            <p id="advisorAddress"></p>
+                            <p id="advisorPhone"></p>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
 
     </section>
