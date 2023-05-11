@@ -6,6 +6,10 @@ const ocrKey = 'K86624004988957';
 const setBudget = document.querySelector(".set-budget");
 const setSavings = document.querySelector(".set-saving");
 const budgetInput = document.querySelector(".budget-button");
+let savingsAmount = 0;
+let moneySpent = 0;
+let moneyLeft = 0;
+let myChart = undefined;
 //__________________Today's Date________________________
 today.textContent = "Today is " + dayjs().format('MMMM D, YYYY');
 
@@ -62,9 +66,10 @@ budgetInput.addEventListener("click", function (event) {
   const savings = setSavings.value;
   // savingsAmount = will convert the budget number into the savings percentage from the whole number you chose.
   // toFixed(2) = will round the number to two decimal places.
-  const savingsAmount = (Math.floor(budget / 100) * savings).toFixed(2);
+  savingsAmount = (Math.floor(budget / 100) * savings).toFixed(2);
   // console.log(budget);
   // console.log(savingsAmount);
+  renderGraph();
 });
 
 
@@ -82,13 +87,21 @@ budgetInput.addEventListener("click", function (event) {
 //Graph should update in appearance based on those three data points
 //Display the graph on the page using chart.js
 document.addEventListener('DOMContentLoaded', function() {
-    var ctx = document.getElementById('pie-chart').getContext('2d');
-    var myChart = new Chart(ctx, {
+    renderGraph();
+  });
+
+  function renderGraph() {
+    if (myChart) {
+      myChart.destroy();
+    };
+    document.getElementById('pie-chart').textContent = '';
+    const ctx = document.getElementById('pie-chart').getContext('2d');
+    myChart = new Chart(ctx, {
       type: 'pie',
       data: {
         labels: ['Money Left', 'Savings', 'Money Spent'],
         datasets: [{
-          data: [1000, 500, 700], // data should be replaced with the data from the three sources
+          data: [1000, savingsAmount, 700], // data should be replaced with the data from the three sources
           // data: [budgetLeft, savings, expenses]
           // budgetLeft = budget - expenses - savings
           // savings = budget * saving% transformed from whole number to decimal 0.00 (4% = 0.04)
@@ -121,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
     });
-  });
+  }
 
 
 
