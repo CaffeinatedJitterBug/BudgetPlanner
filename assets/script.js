@@ -155,7 +155,7 @@ function renderGraph() {
 
 //_____________ Add/Render Goal using local storage______________
 
-const storedGoals = JSON.parse(localStorage.getItem('goals'));
+const storedGoals = JSON.parse(localStorage.getItem('goals')) || []; /*EO*/
 
 const goalList = document.getElementById('goal-list');
 renderGoals();
@@ -184,7 +184,7 @@ function renderGoals() {
     li.textContent = goal;
     goalList.appendChild(li);
   }
-}
+} /*EO*/
 
 
 
