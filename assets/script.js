@@ -65,7 +65,7 @@ receiptSubmit.addEventListener('click', fileOCR);
 function fileOCR(event) {
   event.preventDefault();
   const ocrKey = 'K86624004988957'; //AG
-  const file = document.getElementById('receipt').files[0].name;
+  //const file = document.getElementById('receipt').files[0].name;
   const ocrURL = 'https://api.ocr.space/pare/image?apikey=' + ocrKey + '&file=' + file;
 
   fetch(ocrURL)
