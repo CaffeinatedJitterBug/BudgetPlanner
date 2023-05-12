@@ -72,8 +72,6 @@ budgetInput.addEventListener("click", function (event) {
   renderGraph();
 });
 
-
-
 //__________________Add-Expense-Button__________________
 //Add event listener to the add expense button
 //This should update the graph accordingly
@@ -82,14 +80,13 @@ budgetInput.addEventListener("click", function (event) {
 
 
 //__________________Graph functions_____________________
-//Function related to the graph display API
-//Should display the graph on the page with all the data from the three sources (budget, expenses, savings)
-//Graph should update in appearance based on those three data points
-//Display the graph on the page using chart.js
+// Calls the graph to renter when the page loads
+//Michael Tranquillo
 document.addEventListener('DOMContentLoaded', function() {
     renderGraph();
   });
-
+// Function for re-rendering the graph whenever needed.
+//Michael Tranquillo
   function renderGraph() {
     if (myChart) {
       myChart.destroy();
