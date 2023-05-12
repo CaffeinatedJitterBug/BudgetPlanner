@@ -13,7 +13,8 @@ canvas {
 /*___________________________Global_____________________ */
 h1 {
     color: #02425c;
-    font-size: 4.8em;
+    font-size: 4em;
+    font-family: 'Black Han Sans', sans-serif;
 }
 
 /*___________________________Header_____________________ */
@@ -41,7 +42,8 @@ h1 {
 
 .header-title {
     height: 17em;
-    background-image: url(./media/background-header.jpg);
+    background-image: url(./media/2\ -\ using\ blue\ colors\ cool\ colors\ from\ dark\ to\ lig.png);
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
