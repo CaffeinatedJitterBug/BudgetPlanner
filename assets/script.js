@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-budgetSubmit.addEventListener('click', fileOCR);
+receiptSubmit.addEventListener('click', fileOCR);
   
 function fileOCR(event) {
   event.preventDefault();
