@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 receiptSubmit.addEventListener('click', fileOCR);
-  
+
 function fileOCR(event) {
   event.preventDefault();
   const ocrKey = 'K86624004988957'; //AG
@@ -69,12 +69,12 @@ function fileOCR(event) {
   const ocrURL = 'https://api.ocr.space/pare/image?apikey=' + ocrKey + '&file=' + file;
 
   fetch(ocrURL)
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function() {
-    console.log(response);
-  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function () {
+      console.log(response);
+    })
 }
 //End AG
 
@@ -151,6 +151,39 @@ function renderGraph() {
       display: false
     }
   });
+}
+
+//_____________ Add/Render Goal using local storage______________
+
+const storedGoals = JSON.parse(localStorage.getItem('goals'));
+
+const goalList = document.getElementById('goal-list');
+renderGoals();
+
+const addGoalButton = document.getElementById('addGoalBtn');
+addGoalButton.addEventListener('click', addGoal);
+
+function addGoal() {
+  const inputField = document.getElementById('goal-input');
+  const goalText = inputField.value;
+
+  if (goalText) {
+    storedGoals.push(goalText);
+    localStorage.setItem('goals', JSON.stringify(storedGoals));
+    inputField.value = '';
+    renderGoals(goalText);
+  }
+}
+
+function renderGoals() {
+  goalList.innerHTML = '';
+
+  for (let i = 0; i < storedGoals.length; i++) {
+    const goal = storedGoals[i];
+    const li = document.createElement('li');
+    li.textContent = goal;
+    goalList.appendChild(li);
+  }
 }
 
 
