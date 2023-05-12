@@ -1,12 +1,13 @@
 //__________________Global Variables____________________
 const budget = document.getElementById("budget"); //example
-const today = document.getElementById("date");
-const ocrKey = 'K86624004988957';
+const today = document.getElementById("date"); //AG
+const budgetSubmit = document.getElementById('submit'); //AG
 
 //__________________Today's Date________________________
-today.textContent = "Today is " + dayjs().format('MMMM D, YYYY');
+today.textContent = "Today is " + dayjs().format('MMMM D, YYYY'); //AG
 
 //__________________Event-Listeners_____________________
+//AG
 document.addEventListener('DOMContentLoaded', () => {
     // Functions to open and close a modal
     function openModal($el) {
@@ -51,6 +52,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+budgetSubmit.addEventListener('click', fileOCR);
+  
+function fileOCR(event) {
+  event.preventDefault();
+  const ocrKey = 'K86624004988957'; //AG
+  const file = document.getElementById('receipt').files[0].name;
+  const ocrURL = 'https://api.ocr.space/pare/image?apikey=' + ocrKey + '&file=' + file;
+
+  fetch(ocrURL)
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function() {
+    console.log(response);
+  })
+}
+//End AG
+
 //__________________Set-Budget-Button___________________
 //Add event listener to the set budget button
 //This should set the budget and display it on the page
@@ -69,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
 //Should display the graph on the page with all the data from the three sources (budget, expenses, savings)
 //Graph should update in appearance based on those three data points
 //Display the graph on the page using chart.js
-document.addEventListener('DOMContentLoaded', function() {
+/* document.addEventListener('DOMContentLoaded', function() {
     var ctx = document.getElementById('pie-chart').getContext('2d');
     var myChart = new Chart(ctx, {
       type: 'pie',
@@ -110,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
-
+ */
 
 
 //_______________Find An Advisor_________________
