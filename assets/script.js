@@ -1,7 +1,7 @@
 //__________________Global Variables____________________
 const budget = document.getElementById("budget"); //example
 const today = document.getElementById("date"); //AG
-const budgetSubmit = document.getElementById('submit'); //AG
+const receiptSubmit = document.getElementById('submit'); //AG
 //HTML elements.
 const setBudget = document.querySelector(".set-budget");
 const setSavings = document.querySelector(".set-saving");
