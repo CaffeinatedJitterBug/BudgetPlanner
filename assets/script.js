@@ -1,7 +1,7 @@
 //__________________Global Variables____________________
 const budget = document.getElementById("budget"); //example
-const today = document.getElementById("date");
-const ocrKey = 'K86624004988957';
+const today = document.getElementById("date"); //AG
+const receiptSubmit = document.getElementById('submit'); //AG
 //HTML elements.
 const setBudget = document.querySelector(".set-budget");
 const setSavings = document.querySelector(".set-saving");
@@ -11,9 +11,10 @@ let moneySpent = 0;
 let moneyLeft = 0;
 let myChart = undefined;
 //__________________Today's Date________________________
-today.textContent = "Today is " + dayjs().format('MMMM D, YYYY');
+today.textContent = "Today is " + dayjs().format('MMMM D, YYYY'); //AG
 
 //__________________Event-Listeners_____________________
+//AG
 document.addEventListener('DOMContentLoaded', () => {
   // Functions to open and close a modal
   function openModal($el) {
@@ -58,6 +59,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+receiptSubmit.addEventListener('click', fileOCR);
+  
+function fileOCR(event) {
+  event.preventDefault();
+  const ocrKey = 'K86624004988957'; //AG
+  const file = document.getElementById('receipt').files[0].name;
+  const ocrURL = 'https://api.ocr.space/pare/image?apikey=' + ocrKey + '&file=' + file;
+
+  fetch(ocrURL)
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function() {
+    console.log(response);
+  })
+}
+//End AG
+
 //__________________Set-Budget-Button___________________
 //Michael Tranquillo
 budgetInput.addEventListener("click", function (event) {
