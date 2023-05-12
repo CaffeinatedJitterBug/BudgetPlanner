@@ -2,7 +2,6 @@
 const budget = document.getElementById("budget"); //example
 const today = document.getElementById("date"); //AG
 const receiptSubmit = document.getElementById('submit'); //AG
-//HTML elements.
 const setBudget = document.querySelector(".set-budget");
 const setSavings = document.querySelector(".set-saving");
 const budgetInput = document.querySelector(".budget-button");
@@ -61,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 receiptSubmit.addEventListener('click', fileOCR);
-  
+
 function fileOCR(event) {
   event.preventDefault();
   const ocrKey = 'K86624004988957'; //AG
@@ -69,12 +68,12 @@ function fileOCR(event) {
   const ocrURL = 'https://api.ocr.space/parse/image?apikey=' + ocrKey + '&file=' + file;
 
   fetch(ocrURL)
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function() {
-    console.log(response);
-  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function () {
+      console.log(response);
+    })
 }
 //End AG
 
@@ -96,6 +95,7 @@ budgetInput.addEventListener("click", function (event) {
 //Add event listener to the add expense button
 //This should update the graph accordingly
 //This should add the expense to the local storage
+//This should link to receipts and update in accordance.
 
 
 
@@ -152,6 +152,39 @@ function renderGraph() {
     }
   });
 }
+
+//_____________ Add/Render Goal using local storage______________
+
+const storedGoals = JSON.parse(localStorage.getItem('goals')) || []; /*EO*/
+
+const goalList = document.getElementById('goal-list');
+renderGoals();
+
+const addGoalButton = document.getElementById('addGoalBtn');
+addGoalButton.addEventListener('click', addGoal);
+
+function addGoal() {
+  const inputField = document.getElementById('goal-input');
+  const goalText = inputField.value;
+
+  if (goalText) {
+    storedGoals.push(goalText);
+    localStorage.setItem('goals', JSON.stringify(storedGoals));
+    inputField.value = '';
+    renderGoals(goalText);
+  }
+}
+
+function renderGoals() {
+  goalList.innerHTML = '';
+
+  for (let i = 0; i < storedGoals.length; i++) {
+    const goal = storedGoals[i];
+    const li = document.createElement('li');
+    li.textContent = goal;
+    goalList.appendChild(li);
+  }
+} /*EO*/
 
 
 
