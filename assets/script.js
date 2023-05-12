@@ -1,5 +1,5 @@
 //__________________Global Variables____________________
-const budget = document.getElementById("budget"); //example
+let budget = document.getElementById("budget"); //example
 const today = document.getElementById("date"); //AG
 const receiptSubmit = document.getElementById('submit'); //AG
 const setBudget = document.querySelector(".set-budget");
@@ -81,8 +81,8 @@ function fileOCR(event) {
 //Michael Tranquillo
 budgetInput.addEventListener("click", function (event) {
   event.preventDefault();
-  const budget = setBudget.value;
-  const savings = setSavings.value;
+  budget = setBudget.value;
+  let savings = setSavings.value;
   // savingsAmount = will convert the budget number into the savings percentage from the whole number you chose.
   // toFixed(2) = will round the number to two decimal places.
   savingsAmount = (Math.floor(budget / 100) * savings).toFixed(2);
@@ -111,6 +111,7 @@ function renderGraph() {
   if (myChart) {
     myChart.destroy();
   };
+  moneyLeft = budget - moneySpent - savingsAmount; //This will pull the data from each section and calculate the money left.
   document.getElementById('pie-chart').textContent = '';
   const ctx = document.getElementById('pie-chart').getContext('2d');
   myChart = new Chart(ctx, {
@@ -118,7 +119,7 @@ function renderGraph() {
     data: {
       labels: ['Money Left', 'Savings', 'Money Spent'],
       datasets: [{
-        data: [1000, savingsAmount, 700], // data should be replaced with the data from the three sources
+        data: [moneyLeft, savingsAmount, moneySpent], // data should be replaced with the data from the three sources
         // data: [budgetLeft, savings, expenses]
         // budgetLeft = budget - expenses - savings
         // savings = budget * saving% transformed from whole number to decimal 0.00 (4% = 0.04)
