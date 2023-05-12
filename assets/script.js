@@ -2,7 +2,14 @@
 const budget = document.getElementById("budget"); //example
 const today = document.getElementById("date");
 const ocrKey = 'K86624004988957';
-
+//HTML elements.
+const setBudget = document.querySelector(".set-budget");
+const setSavings = document.querySelector(".set-saving");
+const budgetInput = document.querySelector(".budget-button");
+let savingsAmount = 0;
+let moneySpent = 0;
+let moneyLeft = 0;
+let myChart = undefined;
 //__________________Today's Date________________________
 today.textContent = "Today is " + dayjs().format('MMMM D, YYYY');
 
@@ -52,11 +59,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 //__________________Set-Budget-Button___________________
-//Add event listener to the set budget button
-//This should set the budget and display it on the page
-//Append it to the graph so that it can be displayed appropriately
-// Set savings to 4% of the budget
-//This should add the budget to the local storage
+//Michael Tranquillo
+budgetInput.addEventListener("click", function (event) {
+  event.preventDefault();
+  const budget = setBudget.value;
+  const savings = setSavings.value;
+  // savingsAmount = will convert the budget number into the savings percentage from the whole number you chose.
+  // toFixed(2) = will round the number to two decimal places.
+  savingsAmount = (Math.floor(budget / 100) * savings).toFixed(2);
+  // console.log(budget);
+  // console.log(savingsAmount);
+  renderGraph();
+});
+
 //__________________Add-Expense-Button__________________
 //Add event listener to the add expense button
 //This should update the graph accordingly
@@ -65,18 +80,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 //__________________Graph functions_____________________
-//Function related to the graph display API
-//Should display the graph on the page with all the data from the three sources (budget, expenses, savings)
-//Graph should update in appearance based on those three data points
-//Display the graph on the page using chart.js
+// Calls the graph to renter when the page loads
+//Michael Tranquillo
 document.addEventListener('DOMContentLoaded', function() {
-    var ctx = document.getElementById('pie-chart').getContext('2d');
-    var myChart = new Chart(ctx, {
+    renderGraph();
+  });
+// Function for re-rendering the graph whenever needed.
+//Michael Tranquillo
+  function renderGraph() {
+    if (myChart) {
+      myChart.destroy();
+    };
+    document.getElementById('pie-chart').textContent = '';
+    const ctx = document.getElementById('pie-chart').getContext('2d');
+    myChart = new Chart(ctx, {
       type: 'pie',
       data: {
         labels: ['Money Left', 'Savings', 'Money Spent'],
         datasets: [{
-          data: [1000, 500, 700], // data should be replaced with the data from the three sources
+          data: [1000, savingsAmount, 700], // data should be replaced with the data from the three sources
           // data: [budgetLeft, savings, expenses]
           // budgetLeft = budget - expenses - savings
           // savings = budget * saving% transformed from whole number to decimal 0.00 (4% = 0.04)
@@ -109,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
     });
-  });
+  }
 
 
 
