@@ -2,7 +2,6 @@
 const budget = document.getElementById("budget"); //example
 const today = document.getElementById("date"); //AG
 const receiptSubmit = document.getElementById('submit'); //AG
-//HTML elements.
 const setBudget = document.querySelector(".set-budget");
 const setSavings = document.querySelector(".set-saving");
 const budgetInput = document.querySelector(".budget-button");
@@ -96,6 +95,7 @@ budgetInput.addEventListener("click", function (event) {
 //Add event listener to the add expense button
 //This should update the graph accordingly
 //This should add the expense to the local storage
+//This should link to receipts and update in accordance.
 
 
 
