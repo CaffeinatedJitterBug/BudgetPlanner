@@ -87,8 +87,12 @@ budgetInput.addEventListener("click", function (event) {
   // savingsAmount = will convert the budget number into the savings percentage from the whole number you chose.
   // toFixed(2) = will round the number to two decimal places.
   savingsAmount = (Math.floor(budget / 100) * savings).toFixed(2);
-  // console.log(budget);
-  // console.log(savingsAmount);
+  //clear local storage if it exists before setting new values
+  localStorage.clear();
+  //store the budget and savings amount in local storage
+  localStorage.setItem('budget', budget);
+  localStorage.setItem('savingsAmount', savingsAmount);
+  getLocalStorage();
   renderGraph();
 });
 
@@ -100,7 +104,12 @@ manualInput.addEventListener("click", function (event) {
   const expenseItem = document.querySelector(".expense-item-input");
   const expenseAmount = document.querySelector(".expense-amount-input");
   moneySpent += parseFloat(expenseAmount.value);
-  console.log(moneySpent);
+  //set local storage for the expense item and amount json
+  localStorage.setItem('expenseItem', JSON.stringify(expenseItem.value));
+  localStorage.setItem('expenseAmount', JSON.stringify(expenseAmount.value));
+  //set local storage for the money spent
+  localStorage.setItem('moneySpent', moneySpent);
+  callLocalStorage();
   renderGraph();
 });
 
@@ -109,7 +118,7 @@ manualInput.addEventListener("click", function (event) {
 
 
 //__________________Graph functions_____________________
-// Calls the graph to renter when the page loads
+// Calls the graph to render when the page loads
 //Michael Tranquillo
 document.addEventListener('DOMContentLoaded', function () {
   renderGraph();
@@ -120,6 +129,7 @@ function renderGraph() {
   if (myChart) {
     myChart.destroy();
   };
+  callLocalStorage();
   moneyLeft = budget - moneySpent - savingsAmount; //This will pull the data from each section and calculate the money left.
   document.getElementById('pie-chart').textContent = '';
   const ctx = document.getElementById('pie-chart').getContext('2d');
@@ -276,4 +286,6 @@ searchBtn.addEventListener('click', function () {
 
 
 //__________________Local Storage Display_______________
-//This should display local storage data on the page
+function getLocalStorage() {
+
+}
