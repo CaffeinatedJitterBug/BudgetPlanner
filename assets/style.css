@@ -58,6 +58,17 @@ h1 {
     text-align: center;
 }
 
+/*___________________________Date______________________________*/
+
+#date {
+    font-size: 40px;
+    font-family: 'Playfair Display', sans-serif;
+    background-color: #3bc0f9;
+    color: #e9f5f6;
+    padding: 2%;
+    width: 100%;
+}
+
 
 /*___________________________Advisor Modal_____________________ */
 .advisorModalClass {

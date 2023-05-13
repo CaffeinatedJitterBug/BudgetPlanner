@@ -63,16 +63,17 @@ receiptSubmit.addEventListener('click', fileOCR);
 
 function fileOCR(event) {
   event.preventDefault();
-  const ocrKey = 'K86624004988957'; //AG
-  const file = document.getElementById('receipt').files[0].name;
-  const ocrURL = 'https://api.ocr.space/parse/image?apikey=' + ocrKey + '&file=' + file;
+  const ocrKey = 'K86624004988957';
+  const fileName = document.getElementById('receipt').files[0];
+  const fileURL = URL.createObjectURL(fileName);
+  const ocrURL = 'https://api.ocr.space/parse/imageUrl?apikey=' + ocrKey + '&url=' + fileURL + '&filetype=jpg';
 
   fetch(ocrURL)
-    .then(function (response) {
+    .then(function(response) {
       return response.json();
     })
-    .then(function () {
-      console.log(response);
+    .then(function(data) {
+      console.log(data);
     })
 }
 //End AG
