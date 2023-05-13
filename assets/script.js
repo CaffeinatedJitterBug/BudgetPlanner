@@ -109,7 +109,7 @@ manualInput.addEventListener("click", function (event) {
   localStorage.setItem('expenseAmount', JSON.stringify(expenseAmount.value));
   //set local storage for the money spent
   localStorage.setItem('moneySpent', moneySpent);
-  callLocalStorage();
+  getLocalStorage();
   renderGraph();
 });
 
@@ -129,7 +129,7 @@ function renderGraph() {
   if (myChart) {
     myChart.destroy();
   };
-  callLocalStorage();
+  getLocalStorage();
   moneyLeft = budget - moneySpent - savingsAmount; //This will pull the data from each section and calculate the money left.
   document.getElementById('pie-chart').textContent = '';
   const ctx = document.getElementById('pie-chart').getContext('2d');
