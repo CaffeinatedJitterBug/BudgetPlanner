@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
@@ -23,19 +24,18 @@
                 <div class="level-left"></div>
                 <div class="level-right">
                     <ul class="is-flex is-justify-content-flex-end list-item">
-                        <!-- potential logo -->
-                        <!-- <li><a href="#">Logo</a></li> -->
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Set Budget</a></li>
-                        <li><a href="#">Overview</a></li>
-                        <li><a href="#">Spendings</a></li>
+                        <li><a href="#budgetx">Set Budget</a></li>
+                        <li><a href="#overviewx">Overview</a></li>
+                        <li><a href="#spendingx">Spendings</a></li>
+                        <li><a href="#goalsx">Goals</a></li>
+                        <li><a href="#advisorx">Find an Advisor</a></li>
                     </ul>
                 </div>
             </nav>
         </section>
         <section class="title header-title container level">
             <div class="title-position level-item has-text-centered">
-                <h1>Budget Planner</h1>
+                <h1 class="gradient-text">Budget Planner</h1>
             </div>
         </section>
     </header>
@@ -50,11 +50,13 @@
 
         <div class="container is-flex">
             <div class="container">
-                <section class="overview column is-12">
+                <section class="overview column is-12" id="overviewx">
                     <h2>Overview</h2>
                     <div class="overview-text">
-                        <p>Text place holder to show percentage of amount spent.</p>
-                        <p>This is something to write saying YOU GOT THIS!</p>
+                        <p>This is the % remaining from your budget: <span class="percentage-left"></span></p>
+                        <p>Following your budget is one of the best things you can do for your financial health. 
+                            It can help you save money, pay off debt, and reach your financial goals.
+                        Whatever your plans for budgeting, we're here to help you through the way!</p>
                     </div>
                     <div id="pie-chart-container">
                         <canvas id="pie-chart"></canvas>
@@ -63,7 +65,7 @@
             </div>
 
             <div class="container is-flex is-flex-direction-column is-align-items-center">
-                <section class="budget-set column is-5">
+                <section class="budget-set column is-5" id="budgetx">
                     <form action="">
                         <div class="control">
                             <input class="input set-budget" type="number" placeholder="Enter amount of money you have!">
@@ -81,16 +83,13 @@
 
                 <section class="section is-flex is-justify-content-center">
                     <!--This section holds both inputs as a group for layout-->
-                    <section class="receipts column is-10">
+                    <section class="receipts column is-10" id="spendingx">
                         <ul>
-                            <li>Item: 50$</li>
-                            <li>Items: 120$</li>
-                            <li>Purchase: 300$</li>
+                            <li>Expense: <span class="expense-amount">50</span>$</li>
                         </ul>
-                        <p>TOTAL SPENT:________________________</p>
                         <div class="center-content">
                             <button class="receipt-slip js-modal-trigger button is-primary" data-target="budget-modal">
-                                Add Item <!-- This should open a modal to enter proper budget numbers -->
+                                <i class="fa-solid fa-camera" style="color: #04245c;"></i>
                             </button>
                         </div>
                         <div id="budget-modal" class="modal">
@@ -116,9 +115,9 @@
     <section class="goal-overview section">
         <div class="container is-flex is-justify-content-center">
             <div class="container">
-                <section class="goals column is-flex is-justify-content-center">
+                <section class="goals column is-flex is-justify-content-center" id="goalsx">
                     <div class="center-content">
-                        <h2>Budget Goals</h2>
+                        <h2>Set goals to help you budget!</h2>
                         <ul id="goal-list">
                         </ul>
                         <input type="text" id="goal-input" placeholder="Enter your goals!">
@@ -128,9 +127,9 @@
             </div>
 
             <div class="container is-flex is-justify-content-center">
-                <section class="find-advisor column is-flex is-justify-content-center">
+                <section class="find-advisor column is-flex is-justify-content-center" id="advisorx">
                     <div class="center-content">
-                        <h2>Find an Advisor</h2>
+                        <h2>Find an Advisor!</h2>
                         <p>Find an advisor to help you with your budgeting needs.</p>
                         <div class="is-flex-direction-column">
                             <label for="location">Search Area:</label>
@@ -162,17 +161,18 @@
                 <div class="card">
                     <div class="card-content">
                         <p class="title">
-                            “A really cool motivational quote for people who read motivational quotes about budgeting.”
+                            "Budgeting is like dieting: it's not always easy, but it's worth it in the end."
                         </p>
                         <p class="subtitle">
-                            Cool Team
+                            - Suze Orman
                         </p>
                     </div>
                     <ul>
-                        <li class="card-footer-item"><a href="#">Home</a></li>
-                        <li class="card-footer-item"><a href="#">Set Budget</a></li>
-                        <li class="card-footer-item"><a href="#">Overview</a></li>
-                        <li class="card-footer-item"><a href="#">Spendings</a></li>
+                        <li class="card-footer-item"><a href="#overviewx">Overview</a></li>
+                        <li class="card-footer-item"><a href="#budgetx">Set Budget</a></li>
+                        <li class="card-footer-item"><a href="#spendingx">Spendings</a></li>
+                        <li class="card-footer-item"><a href="#goalsx">Goals</a></li>
+                        <li class="card-footer-item"><a href="#advisorx">Find an Advisor</a></li>
                     </ul>
             </nav>
         </footer>
