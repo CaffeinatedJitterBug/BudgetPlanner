@@ -83,16 +83,16 @@
                 <section class="section is-flex is-justify-content-center">
                     <!--This section holds both inputs as a group for layout-->
                     <section class="receipts column is-10" id="spendingx">
-                        <ul>
+                        <ul class="expense-list">
                             <li>Expense: <span class="expense-amount">50</span>$</li>
                         </ul>
-                        <div class="center-content">
+                        <div id="center-content">
 
-                            <input class="input expense-input" type="text" placeholder="Enter your expense">
+                            <input class="input expense-item-input" type="text" placeholder="Enter your expense">
                             <input class="input expense-amount-input" type="number" placeholder="Enter amount">
 
                             <section class="inline-buttons is-flex">
-                                <button class="expense-submit is-inline">
+                                <button id="expense-submit" class="is-inline">
                                     Submit
                                 </button>
                                 <button class="receipt-slip js-modal-trigger button is-primary is-inline" data-target="budget-modal">

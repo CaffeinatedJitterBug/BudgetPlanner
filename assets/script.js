@@ -5,6 +5,7 @@ const receiptSubmit = document.getElementById('submit'); //AG
 const setBudget = document.querySelector(".set-budget");
 const setSavings = document.querySelector(".set-saving");
 const budgetInput = document.querySelector(".budget-button");
+const manualInput = document.getElementById("expense-submit")
 let savingsAmount = 0;
 let moneySpent = 0;
 let moneyLeft = 0;
@@ -93,9 +94,17 @@ budgetInput.addEventListener("click", function (event) {
 
 //__________________Add-Expense-Button__________________
 //Add event listener to the add expense button
-//This should update the graph accordingly
-//This should add the expense to the local storage
-//This should link to receipts and update in accordance.
+//Michael Tranquillo
+manualInput.addEventListener("click", function (event) {
+  event.preventDefault();
+  const expenseItem = document.querySelector(".expense-item-input");
+  const expenseAmount = document.querySelector(".expense-amount-input");
+  moneySpent += parseFloat(expenseAmount.value);
+  console.log(moneySpent);
+  renderGraph();
+});
+
+
 
 
 
@@ -119,10 +128,7 @@ function renderGraph() {
     data: {
       labels: ['Money Left', 'Savings', 'Money Spent'],
       datasets: [{
-        data: [moneyLeft, savingsAmount, moneySpent], // data should be replaced with the data from the three sources
-        // data: [budgetLeft, savings, expenses]
-        // budgetLeft = budget - expenses - savings
-        // savings = budget * saving% transformed from whole number to decimal 0.00 (4% = 0.04)
+        data: [moneyLeft, savingsAmount, moneySpent],
         backgroundColor: [ // change colors here to match theme
           'rgba(54, 162, 235, 0.7)',
           'rgba(75, 192, 192, 0.7)',
