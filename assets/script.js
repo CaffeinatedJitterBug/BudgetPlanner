@@ -12,6 +12,8 @@ let moneyLeft = 0;
 let myChart = undefined;
 //__________________Today's Date________________________
 today.textContent = "Today is " + dayjs().format('MMMM D, YYYY'); //AG
+//Call for any local storage data if it exists on page load.
+getLocalStorage();
 
 //__________________Event-Listeners_____________________
 //AG
@@ -87,8 +89,9 @@ budgetInput.addEventListener("click", function (event) {
   // savingsAmount = will convert the budget number into the savings percentage from the whole number you chose.
   // toFixed(2) = will round the number to two decimal places.
   savingsAmount = (Math.floor(budget / 100) * savings).toFixed(2);
-  //clear local storage if it exists before setting new values
-  localStorage.clear();
+  //clear local storage of savings and budget
+  localStorage.removeItem('savingsAmount');
+  localStorage.removeItem('budget');
   //store the budget and savings amount in local storage
   localStorage.setItem('budget', budget);
   localStorage.setItem('savingsAmount', savingsAmount);
@@ -287,5 +290,10 @@ searchBtn.addEventListener('click', function () {
 
 //__________________Local Storage Display_______________
 function getLocalStorage() {
-
+  //get local storage for the budget
+  budget = JSON.parse(localStorage.getItem('budget'));
+  //get local storage for the money spent
+  moneySpent = JSON.parse(localStorage.getItem('moneySpent'));
+  //get local storage for the savings amount
+  savingsAmount = JSON.parse(localStorage.getItem('savingsAmount'));
 }
