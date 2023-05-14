@@ -10,6 +10,9 @@ let savingsAmount = 0;
 let moneySpent = 0;
 let moneyLeft = 0;
 let myChart = undefined;
+
+let expenseItemArr = [];
+let expenseAmountArr = [];
 //__________________Today's Date________________________
 today.textContent = "Today is " + dayjs().format('MMMM D, YYYY'); //AG
 //Call for any local storage data if it exists on page load.
@@ -107,14 +110,52 @@ manualInput.addEventListener("click", function (event) {
   const expenseItem = document.querySelector(".expense-item-input");
   const expenseAmount = document.querySelector(".expense-amount-input");
   moneySpent += parseFloat(expenseAmount.value);
+  // Push the new expense item and amount into the arrays
+  expenseItemArr.push(expenseItem.value);
+  expenseAmountArr.push(parseFloat(expenseAmount.value));
   //set local storage for the expense item and amount json
-  localStorage.setItem('expenseItem', JSON.stringify(expenseItem.value));
-  localStorage.setItem('expenseAmount', JSON.stringify(expenseAmount.value));
+  localStorage.setItem('expenseItemArr', JSON.stringify(expenseItem.value));
+  localStorage.setItem('expenseAmountArr', JSON.stringify(expenseAmount.value));
   //set local storage for the money spent
   localStorage.setItem('moneySpent', moneySpent);
+
   getLocalStorage();
+  renderExpense();
   renderGraph();
 });
+
+// render expense info
+  //Michael Tranquillo
+  function renderExpense() {
+    const expenseList = document.querySelector('.expense-list');
+    expenseList.innerHTML = '';
+    let updatedMoneySpent = 0; // Initialize the updated moneySpent variable
+  
+    // loop to create the expense list and append it to the expense list ul
+    for (let i = 0; i < expenseItemArr.length; i++) {
+      const expense = expenseItemArr[i];
+      const amount = expenseAmountArr[i];
+      const li = document.createElement('li');
+      li.textContent = expense + ': $' + amount;
+      expenseList.appendChild(li);
+      const removeBtn = document.createElement('button');
+      removeBtn.textContent = 'X';
+      li.appendChild(removeBtn);
+      removeBtn.addEventListener('click', function () {
+        expenseItemArr.splice(i, 1);
+        expenseAmountArr.splice(i, 1);
+        localStorage.setItem('expenseItemArr', JSON.stringify(expenseItemArr));
+        localStorage.setItem('expenseAmountArr', JSON.stringify(expenseAmountArr));
+        getLocalStorage();
+        renderExpense();
+        renderGraph();
+      });
+      // Update the updatedMoneySpent variable
+      updatedMoneySpent += parseFloat(amount); 
+    }
+    // Update the moneySpent variable
+    moneySpent = updatedMoneySpent;
+  }
 
 
 
@@ -296,4 +337,6 @@ function getLocalStorage() {
   moneySpent = JSON.parse(localStorage.getItem('moneySpent'));
   //get local storage for the savings amount
   savingsAmount = JSON.parse(localStorage.getItem('savingsAmount'));
-}
+
+  renderExpense();
+};
