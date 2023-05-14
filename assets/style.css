@@ -27,7 +27,7 @@ h1 {
   
 /*___________________________body_________________________ */
 body {
-    background-color: #04245c;
+    background-color: #02122d;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 1.2em;
@@ -69,7 +69,6 @@ body {
 
 .header-title {
     height: 17em;
-    background-image: url(./media/2\ -\ using\ blue\ colors\ cool\ colors\ from\ dark\ to\ lig.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
