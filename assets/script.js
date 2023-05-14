@@ -10,8 +10,13 @@ let savingsAmount = 0;
 let moneySpent = 0;
 let moneyLeft = 0;
 let myChart = undefined;
+
+let expenseItemArr = [];
+let expenseAmountArr = [];
 //__________________Today's Date________________________
 today.textContent = "Today is " + dayjs().format('MMMM D, YYYY'); //AG
+//Call for any local storage data if it exists on page load.
+getLocalStorage();
 
 //__________________Event-Listeners_____________________
 //AG
@@ -87,8 +92,13 @@ budgetInput.addEventListener("click", function (event) {
   // savingsAmount = will convert the budget number into the savings percentage from the whole number you chose.
   // toFixed(2) = will round the number to two decimal places.
   savingsAmount = (Math.floor(budget / 100) * savings).toFixed(2);
-  // console.log(budget);
-  // console.log(savingsAmount);
+  //clear local storage of savings and budget
+  localStorage.removeItem('savingsAmount');
+  localStorage.removeItem('budget');
+  //store the budget and savings amount in local storage
+  localStorage.setItem('budget', budget);
+  localStorage.setItem('savingsAmount', savingsAmount);
+  getLocalStorage();
   renderGraph();
 });
 
@@ -100,16 +110,59 @@ manualInput.addEventListener("click", function (event) {
   const expenseItem = document.querySelector(".expense-item-input");
   const expenseAmount = document.querySelector(".expense-amount-input");
   moneySpent += parseFloat(expenseAmount.value);
-  console.log(moneySpent);
+  // Push the new expense item and amount into the arrays
+  expenseItemArr.push(expenseItem.value);
+  expenseAmountArr.push(parseFloat(expenseAmount.value));
+  //set local storage for the expense item and amount json
+  localStorage.setItem('expenseItemArr', JSON.stringify(expenseItem.value));
+  localStorage.setItem('expenseAmountArr', JSON.stringify(expenseAmount.value));
+  //set local storage for the money spent
+  localStorage.setItem('moneySpent', moneySpent);
+
+  getLocalStorage();
+  renderExpense();
   renderGraph();
 });
+
+// render expense info
+  //Michael Tranquillo
+  function renderExpense() {
+    const expenseList = document.querySelector('.expense-list');
+    expenseList.innerHTML = '';
+    let updatedMoneySpent = 0; // Initialize the updated moneySpent variable
+  
+    // loop to create the expense list and append it to the expense list ul
+    for (let i = 0; i < expenseItemArr.length; i++) {
+      const expense = expenseItemArr[i];
+      const amount = expenseAmountArr[i];
+      const li = document.createElement('li');
+      li.textContent = expense + ': $' + amount;
+      expenseList.appendChild(li);
+      const removeBtn = document.createElement('button');
+      removeBtn.textContent = 'X';
+      li.appendChild(removeBtn);
+      removeBtn.addEventListener('click', function () {
+        expenseItemArr.splice(i, 1);
+        expenseAmountArr.splice(i, 1);
+        localStorage.setItem('expenseItemArr', JSON.stringify(expenseItemArr));
+        localStorage.setItem('expenseAmountArr', JSON.stringify(expenseAmountArr));
+        getLocalStorage();
+        renderExpense();
+        renderGraph();
+      });
+      // Update the updatedMoneySpent variable
+      updatedMoneySpent += parseFloat(amount); 
+    }
+    // Update the moneySpent variable
+    moneySpent = updatedMoneySpent;
+  }
 
 
 
 
 
 //__________________Graph functions_____________________
-// Calls the graph to renter when the page loads
+// Calls the graph to render when the page loads
 //Michael Tranquillo
 document.addEventListener('DOMContentLoaded', function () {
   renderGraph();
@@ -120,6 +173,7 @@ function renderGraph() {
   if (myChart) {
     myChart.destroy();
   };
+  getLocalStorage();
   moneyLeft = budget - moneySpent - savingsAmount; //This will pull the data from each section and calculate the money left.
   document.getElementById('pie-chart').textContent = '';
   const ctx = document.getElementById('pie-chart').getContext('2d');
@@ -276,4 +330,13 @@ searchBtn.addEventListener('click', function () {
 
 
 //__________________Local Storage Display_______________
-//This should display local storage data on the page
+function getLocalStorage() {
+  //get local storage for the budget
+  budget = JSON.parse(localStorage.getItem('budget'));
+  //get local storage for the money spent
+  moneySpent = JSON.parse(localStorage.getItem('moneySpent'));
+  //get local storage for the savings amount
+  savingsAmount = JSON.parse(localStorage.getItem('savingsAmount'));
+
+  renderExpense();
+};
