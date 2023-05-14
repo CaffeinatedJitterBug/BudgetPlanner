@@ -20,9 +20,13 @@ h1 {
 /*___________________________h1 gradient__________________ */
 
 .gradient-text {
-    background: linear-gradient(270deg, rgba(2,66,92,1) 5%, rgba(101,207,247,1) 50%, rgba(2,66,92,1) 95%);
+    background: linear-gradient(270deg, rgba(2, 66, 92, 1) 5%, rgba(101, 207, 247, 1) 50%, rgba(2, 66, 92, 1) 95%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+<<<<<<< HEAD
+}
+
+=======
   }
   
 /*___________________________body_________________________ */
@@ -43,6 +47,7 @@ body {
     background-color: #cde4f3;
     padding: 2em 0;
 }
+>>>>>>> origin/main
 
 /*___________________________Header_______________________ */
 
@@ -85,7 +90,26 @@ body {
     text-align: center;
 }
 
+/*___________Pie Chart containers and pie chart__________*/
+#overviewx {
+    border-radius: 150px;
+    width: 50%;
+    padding: 40px;
+    height: 55%;
+}
 
+#pie-chart-container {
+    position: relative;
+    background: transparent;
+    bottom: 45%;
+    left: 45%;
+}
+
+.larger-pie-chart {
+    width: 400px;
+    height: 400px;
+    z-index: 1;
+}
 
 /*___________________________Advisor Modal_____________________ */
 .advisorModalClass {
