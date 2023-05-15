@@ -100,7 +100,7 @@ body {
 /*___________Pie Chart containers and pie chart__________*/
 #overviewx {
     border-radius: 200px;
-    width: 65%;
+    width: 68%;
     padding: 40px;
     height: 70%;
 }
@@ -131,9 +131,24 @@ body {
 
 /*____________Expense Container___________*/
 #spendingx {
-    width: 369%;
-    height: 200%;
+    width: 365%;
+    height: 100%;
     border-radius: 20px;
+}
+
+.expense-list {
+    margin: 1em 1em;
+    flex-grow: 1;
+    height: 11em;
+    overflow: scroll;
+    width: auto;
+    overflow-x: auto;
+    border: 1px solid #04245c;
+}
+
+.expense-spacing {
+    line-height: 2.7em;
+    padding: 0em 2em;
 }
 
 /*________goals container________*/
