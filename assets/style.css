@@ -95,15 +95,15 @@ body {
 /*___________Pie Chart containers and pie chart__________*/
 #overviewx {
     border-radius: 150px;
-    width: 50%;
+    width: 70%;
     padding: 40px;
-    height: 55%;
+    height: 70%;
 }
 
 #pie-chart-container {
     position: relative;
     background: transparent;
-    bottom: 45%;
+    bottom: 30%;
     left: 45%;
 }
 
@@ -111,6 +111,70 @@ body {
     width: 400px;
     height: 400px;
     z-index: 1;
+}
+
+/*____________Budget Container___________*/
+#budgetx {
+    width: 230%;
+    height: 20%;
+    border-radius: 20px;
+}
+
+/*____________Expense Container___________*/
+#spendingx {
+    width: 369%;
+    height: 175%;
+    border-radius: 20px;
+}
+
+/*________goals container________*/
+#goalie {
+    max-height: 216.75px;
+}
+
+#goalsx {
+    position: relative;
+    height: 175%;
+    width: 60%;
+    bottom: 250px;
+    left: 5%;
+    border-radius: 20px;
+}
+
+#goal-list {
+    flex-grow: 1;
+    max-height: 296.13px;
+    overflow-y: auto;
+    max-width: 258.8px;
+    overflow-x: auto;
+}
+
+#goal-input {
+    align-self: center;
+}
+
+#addGoalBtn {
+    align-self: center;
+    margin-top: 10px;
+}
+
+/* ________Goals remove button__________*/
+.removeBtn {
+    font-size: 10px;
+    font-weight: bolder;
+    padding: 4px 8px;
+    background-color: #e9f5f6;
+    color: #04245c;
+    border: 1px solid #3bc0f9;
+    border-radius: 10px;
+}
+
+#advisorx {
+    position: relative;
+    bottom: 125px;
+    left: 165px;
+    width: 100px;
+    border-radius: 20px;
 }
 
 /*___________________________Advisor Modal_____________________ */
@@ -135,17 +199,6 @@ body {
     border-radius: 15px;
     width: 80%;
     max-width: 500px;
-}
-
-/* ________Goals remove button__________*/
-.removeBtn {
-    font-size: 10px;
-    font-weight: bolder;
-    padding: 4px 8px;
-    background-color: #e9f5f6;
-    color: #04245c;
-    border: 1px solid #3bc0f9;
-    border-radius: 10px;
 }
 
 footer {
