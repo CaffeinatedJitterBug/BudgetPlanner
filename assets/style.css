@@ -139,6 +139,7 @@ body {
 /* ________Goals remove button__________*/
 .removeBtn {
     font-size: 10px;
+    font-weight: bolder;
     padding: 4px 8px;
     background-color: #e9f5f6;
     color: #04245c;

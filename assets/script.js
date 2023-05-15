@@ -206,12 +206,12 @@ function renderGraph() {
         }
       }
     },
-    responsive: true, 
+    responsive: true,
     maintainAspectRatio: true,
     legend: {
       display: false
     }
-  });   
+  });
 }
 
 //_____________ Add/Render Goal using local storage______________
