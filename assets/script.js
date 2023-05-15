@@ -76,7 +76,7 @@ function fileOCR(event) {
   const ocrKey = 'K86624004988957';
   const fileName = document.getElementById('receipt').files[0];
   const fileURL = URL.createObjectURL(fileName);
-  const ocrURL = 'https://api.ocr.space/parse/imageUrl?apikey=' + ocrKey + '&url=' + fileURL + '&filetype=jpg';
+  const ocrURL = 'https://api.ocr.space/parse/imageUrl?apikey=' + ocrKey + '&url=' + fileURL + '&filetype=jgp';
 
   fetch(ocrURL)
     .then(function(response) {
