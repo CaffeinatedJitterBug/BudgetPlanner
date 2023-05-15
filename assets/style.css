@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+:root {
+    --ice-light: #65cff7;
+    --pane-padding: 5px 42px;
+  }
+
 /*___________________________Pie Chart_____________________ */
 canvas {
     max-width: 400px;
@@ -30,8 +35,8 @@ h1 {
 body {
     background-color: #02122f;
     font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    font-size: 1.2em;
+    font-weight: 500;
+    font-size: 1.3em;
     line-height: 1.5;
     color: #02425c;
 }
@@ -128,4 +133,30 @@ body {
     border-radius: 15px;
     width: 80%;
     max-width: 500px;
+}
+
+footer {
+    text-align: center;
+}
+
+footer .card {
+    background-color: #0371a1;
+    box-shadow: 0 0 10px 15px #0371a1;
+}
+footer .card-footer {
+    width: 100%;
+}
+
+
+
+footer nav {
+    width: 100%;
+}
+
+/*change color of footer text and links*/
+footer a,
+footer p,
+.title,
+.subtitle  {
+    color: #fff;
 }
