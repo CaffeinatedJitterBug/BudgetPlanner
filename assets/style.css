@@ -144,6 +144,8 @@ body {
     flex-grow: 1;
     max-height: 296.13px;
     overflow-y: auto;
+    max-width: 258.8px;
+    overflow-x: auto;
 }
 
 #goal-input {
