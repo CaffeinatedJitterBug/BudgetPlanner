@@ -177,6 +177,7 @@ body {
     width: 23em;
     overflow: auto;
     padding: 5px;
+    margin-bottom: 20px;
 }
 
 #goal-input {
@@ -200,10 +201,10 @@ body {
 }
 
 #advisorx {
+    width: 100px;
     position: relative;
     bottom: 125px;
     left: 165px;
-    width: 100px;
     border-radius: 20px;
 }
 
