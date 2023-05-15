@@ -26,6 +26,14 @@ With our receipts API, you are able to upload a picture of a receipt, and it wil
 
 ## Problems Faced and Solutions
 
+## Future Implementations
+* User login: To keep tract of multiple accounts if needed, and access from multiple devices.
+* Personalized features that would take the information from accounts, and implement them into different text areas, and more. 
+* Monthly statements that iterates over past budget plans, to better keep tract of goals and past expenses. 
+* Expense categories: So that you can see the percentage % of each type of expense, and better plan that way. 
+* Colour customization for graphs.
+* Set goals into its own page with extra customizations, and js implementations, such as full savings percentage, et cetera.
+
 ## Wireframe
 ![WIREFRAME](https://github.com/CaffeinatedJitterBug/BudgetPlanner/assets/117021869/cdb80972-70f1-4535-8c64-89fbe0d8068d)
 
