@@ -23,11 +23,7 @@ h1 {
     background: linear-gradient(270deg, rgba(2, 66, 92, 1) 5%, rgba(101, 207, 247, 1) 50%, rgba(2, 66, 92, 1) 95%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-<<<<<<< HEAD
 }
-
-=======
-  }
   
 /*___________________________body_________________________ */
 body {
@@ -47,7 +43,6 @@ body {
     background-color: #cde4f3;
     padding: 2em 0;
 }
->>>>>>> origin/main
 
 /*___________________________Header_______________________ */
 

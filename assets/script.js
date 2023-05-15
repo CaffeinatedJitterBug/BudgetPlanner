@@ -181,9 +181,9 @@ function renderGraph() {
       datasets: [{
         data: [moneyLeft, savingsAmount, moneySpent],
         backgroundColor: [ // change colors here to match theme
-          'rgba(54, 162, 235, 0.7)',
-          'rgba(75, 192, 192, 0.7)',
-          'rgba(255, 99, 132, 0.7)'
+          'rgba(54, 162, 235, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(255, 99, 132, 1)'
         ],
         borderColor: [
           'rgba(54, 162, 235, 1)',
