@@ -5,12 +5,22 @@ const receiptSubmit = document.getElementById('submit'); //AG
 const setBudget = document.querySelector(".set-budget");
 const setSavings = document.querySelector(".set-saving");
 const budgetInput = document.querySelector(".budget-button");
+const manualInput = document.getElementById("expense-submit")
 let savingsAmount = 0;
 let moneySpent = 0;
 let moneyLeft = 0;
 let myChart = undefined;
+
+let expenseItemArr = JSON.parse(localStorage.getItem('expenseItemArr')) || [];
+let expenseAmountArr = JSON.parse(localStorage.getItem('expenseAmountArr')) || [];
 //__________________Today's Date________________________
 today.textContent = "Today is " + dayjs().format('MMMM D, YYYY'); //AG
+//Call for any local storage data if it exists on page load.
+document.addEventListener('DOMContentLoaded', function () {
+  getLocalStorage();
+  renderExpense();
+  renderGraph();
+});
 
 //__________________Event-Listeners_____________________
 //AG
@@ -80,6 +90,8 @@ function fileOCR(event) {
 
 //__________________Set-Budget-Button___________________
 //Michael Tranquillo
+//set submit button for budget section that takes budget as total and savings as a percentage
+//Michael Tranquillo
 budgetInput.addEventListener("click", function (event) {
   event.preventDefault();
   budget = setBudget.value;
@@ -87,21 +99,90 @@ budgetInput.addEventListener("click", function (event) {
   // savingsAmount = will convert the budget number into the savings percentage from the whole number you chose.
   // toFixed(2) = will round the number to two decimal places.
   savingsAmount = (Math.floor(budget / 100) * savings).toFixed(2);
-  // console.log(budget);
-  // console.log(savingsAmount);
+  // Set local storage for the budget and savings amount
+  localStorage.setItem('budget', budget);
+  localStorage.setItem('savingsAmount', savingsAmount);
+  // Set local storage for the expense item and amount arrays
+  localStorage.setItem('expenseItemArr', JSON.stringify(expenseItemArr));
+  localStorage.setItem('expenseAmountArr', JSON.stringify(expenseAmountArr));
   renderGraph();
 });
 
-//__________________Add-Expense-Button__________________
-//Add event listener to the add expense button
-//This should update the graph accordingly
-//This should add the expense to the local storage
-//This should link to receipts and update in accordance.
+
+//__________________Set-expense-Button__________________
+//Michael Tranquillo
+manualInput.addEventListener("click", function (event) {
+  event.preventDefault();
+  const expenseItem = document.querySelector(".expense-item-input");
+  const expenseAmount = document.querySelector(".expense-amount-input");
+  moneySpent += parseFloat(expenseAmount.value);
+  // Push the new expense item and amount into the arrays
+  expenseItemArr.push(expenseItem.value);
+  expenseAmountArr.push(parseFloat(expenseAmount.value));
+  // Set local storage for the expense item and amount arrays
+  localStorage.setItem('expenseItemArr', JSON.stringify(expenseItemArr));
+  localStorage.setItem('expenseAmountArr', JSON.stringify(expenseAmountArr));
+  // Set local storage for the money spent
+  localStorage.setItem('moneySpent', moneySpent);
+
+  getLocalStorage();
+  renderExpense();
+  renderGraph();
+});
+
+// render expense info
+//Michael Tranquillo
+function renderExpense() {
+  const expenseList = document.querySelector('.expense-list');
+  expenseList.innerHTML = '';
+  let updatedMoneySpent = 0;
+
+  // Retrieve expenseItemArr and expenseAmountArr from local storage
+  const storedExpenseItemArr = JSON.parse(localStorage.getItem('expenseItemArr')) || [];
+  const storedExpenseAmountArr = JSON.parse(localStorage.getItem('expenseAmountArr')) || [];
+
+  // Convert retrieved values to arrays if they are not already
+  const expenseItemArr = Array.isArray(storedExpenseItemArr) ? storedExpenseItemArr : [storedExpenseItemArr];
+  const expenseAmountArr = Array.isArray(storedExpenseAmountArr) ? storedExpenseAmountArr : [storedExpenseAmountArr];
+
+  for (let i = 0; i < expenseItemArr.length; i++) {
+    const expense = expenseItemArr[i];
+    const amount = expenseAmountArr[i];
+    updatedMoneySpent += parseFloat(amount);
+
+    const li = document.createElement('li');
+    li.textContent = expense + ': $' + amount;
+    expenseList.appendChild(li);
+
+    const removeBtn = document.createElement('button');
+    removeBtn.textContent = 'X';
+    removeBtn.setAttribute('class', 'removeBtn');
+    li.appendChild(removeBtn);
+
+    removeBtn.addEventListener('click', function () {
+      expenseItemArr.splice(i, 1);
+      expenseAmountArr.splice(i, 1);
+      localStorage.setItem('expenseItemArr', JSON.stringify(expenseItemArr));
+      localStorage.setItem('expenseAmountArr', JSON.stringify(expenseAmountArr));
+      renderExpense();
+      renderGraph();
+    });
+
+  }
+
+  moneySpent = updatedMoneySpent;
+
+  // Store the updated expenseItemArr and expenseAmountArr in local storage
+  localStorage.setItem('expenseItemArr', JSON.stringify(expenseItemArr));
+  localStorage.setItem('expenseAmountArr', JSON.stringify(expenseAmountArr));
+}
+
+
 
 
 
 //__________________Graph functions_____________________
-// Calls the graph to renter when the page loads
+// Calls the graph to render when the page loads
 //Michael Tranquillo
 document.addEventListener('DOMContentLoaded', function () {
   renderGraph();
@@ -112,6 +193,7 @@ function renderGraph() {
   if (myChart) {
     myChart.destroy();
   };
+  getLocalStorage();
   moneyLeft = budget - moneySpent - savingsAmount; //This will pull the data from each section and calculate the money left.
   document.getElementById('pie-chart').textContent = '';
   const ctx = document.getElementById('pie-chart').getContext('2d');
@@ -120,14 +202,11 @@ function renderGraph() {
     data: {
       labels: ['Money Left', 'Savings', 'Money Spent'],
       datasets: [{
-        data: [moneyLeft, savingsAmount, moneySpent], // data should be replaced with the data from the three sources
-        // data: [budgetLeft, savings, expenses]
-        // budgetLeft = budget - expenses - savings
-        // savings = budget * saving% transformed from whole number to decimal 0.00 (4% = 0.04)
+        data: [moneyLeft, savingsAmount, moneySpent],
         backgroundColor: [ // change colors here to match theme
-          'rgba(54, 162, 235, 0.7)',
-          'rgba(75, 192, 192, 0.7)',
-          'rgba(255, 99, 132, 0.7)'
+          'rgba(54, 162, 235, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(255, 99, 132, 1)'
         ],
         borderColor: [
           'rgba(54, 162, 235, 1)',
@@ -143,11 +222,14 @@ function renderGraph() {
           color: '#fff',
           formatter: function (value, context) {
             return context.chart.data.labels[context.dataIndex];
-          }
+          },
+          anchor: 'center',
+          align: 'center',
+          position: 'relative',
         }
       }
     },
-    reponsive: true,
+    responsive: true,
     maintainAspectRatio: true,
     legend: {
       display: false
@@ -183,8 +265,19 @@ function renderGoals() {
   for (let i = 0; i < storedGoals.length; i++) {
     const goal = storedGoals[i];
     const li = document.createElement('li');
-    li.textContent = goal;
+    li.textContent = goal + ' ';
     goalList.appendChild(li);
+
+    const removeGoal = document.createElement('button');
+    removeGoal.setAttribute('class', 'removeBtn');
+    removeGoal.textContent = "Goal Met";
+    li.appendChild(removeGoal);
+
+    removeGoal.addEventListener('click', function () {
+      li.remove();
+      storedGoals.splice(i, 1);
+      localStorage.setItem('goals', JSON.stringify(storedGoals));
+    })
   }
 } /*EO*/
 
@@ -271,4 +364,13 @@ searchBtn.addEventListener('click', function () {
 
 
 //__________________Local Storage Display_______________
-//This should display local storage data on the page
+function getLocalStorage() {
+  //get local storage for the budget
+  budget = JSON.parse(localStorage.getItem('budget'));
+  //get local storage for the money spent
+  moneySpent = JSON.parse(localStorage.getItem('moneySpent'));
+  //get local storage for the savings amount
+  savingsAmount = JSON.parse(localStorage.getItem('savingsAmount'));
+
+  renderExpense();
+};

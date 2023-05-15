@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+:root {
+    --ice-light: #65cff7;
+    --pane-padding: 5px 42px;
+}
+
 /*___________________________Pie Chart_____________________ */
 canvas {
     max-width: 400px;
@@ -17,14 +22,40 @@ h1 {
     font-family: 'Black Han Sans', sans-serif;
 }
 
+h2 {
+    color: #02425c;
+    font-size: 1.1em;
+    font-family: 'Black Han Sans', sans-serif;
+}
+
 /*___________________________h1 gradient__________________ */
 
 .gradient-text {
-    background: linear-gradient(270deg, rgba(2,66,92,1) 5%, rgba(101,207,247,1) 50%, rgba(2,66,92,1) 95%);
+    background: linear-gradient(270deg, rgba(2, 66, 92, 1) 5%, rgba(101, 207, 247, 1) 50%, rgba(2, 66, 92, 1) 95%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-  }
-  
+}
+
+
+/*___________________________body_________________________ */
+body {
+    background-color: #02122f;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 1.3em;
+    line-height: 1.5;
+    color: #02425c;
+}
+
+/*___________________________Background___________________ */
+.overview,
+.budget-set,
+.receipts,
+.goals,
+.find-advisor {
+    background-color: #cde4f3;
+    padding: 2em 0;
+}
 
 /*___________________________Header_______________________ */
 
@@ -36,11 +67,11 @@ h1 {
     /*li-background*/
     padding: 0.4rem 1rem;
     border-radius: 20px;
-    background-color: #e9f5f6;
+    background-color: transparent;
     /*li-border*/
-    border: #3bc0f9 2px solid;
+    border: none;
     /*li-text-style*/
-    color: #04245c;
+    color: #0371a1;
     font-weight: 600;
     /*li-spacing*/
     gap: 20px;
@@ -51,7 +82,6 @@ h1 {
 
 .header-title {
     height: 17em;
-    background-image: url(./media/2\ -\ using\ blue\ colors\ cool\ colors\ from\ dark\ to\ lig.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -67,18 +97,121 @@ h1 {
     text-align: center;
 }
 
-/*___________________________Date______________________________*/
+/*___________Pie Chart containers and pie chart__________*/
+#overviewx {
+    border-radius: 200px;
+    width: 68%;
+    padding: 40px;
+    height: 70%;
+    box-shadow: -22px 0px 26px 11px rgba(0, 0, 0, 0.78);
+}
 
-#date {
-    font-size: 40px;
-    font-family: 'Playfair Display', sans-serif;
-    background-color: #3bc0f9;
-    color: #e9f5f6;
-    padding: 2%;
-    width: 100%;
+#pie-chart-container {
+    position: relative;
+    background: transparent;
+    bottom: 30%;
+    left: 45%;
+}
+
+.larger-pie-chart {
+    width: 400px;
+    height: 400px;
+    z-index: 1; 
+}
+
+/*____________Budget Container___________*/
+#budgetx {
+    width: 160%;
+    height: 23%;
+    border-radius: 20px;
+    line-height: 2.7em;
+    padding: 0em 2em;
+    box-shadow: 23px -19px 26px 11px rgba(0, 0, 0, 0.78);
 }
 
 
+
+/*____________Expense Container___________*/
+#spendingx {
+    width: 365%;
+    height: 100%;
+    border-radius: 20px;
+    box-shadow: 42px 2px 26px 11px rgba(0, 0, 0, 0.78);
+}
+
+.expense-list {
+    margin: 1em 1em;
+    flex-grow: 1;
+    height: 11em;
+    overflow: auto;
+    width: auto;
+    overflow-x: auto;
+    border: 1px solid #04245c;
+    border-radius: 20px;
+    padding: 5px
+}
+
+.expense-spacing {
+    line-height: 2.7em;
+    padding: 0em 2em;
+}
+
+/*________goals container________*/
+#goalie {
+    max-height: 216.75px;
+}
+
+#goalsx {
+    position: relative;
+    height: 175%;
+    width: 60%;
+    bottom: 250px;
+    left: 5%;
+    border-radius: 20px;
+    box-shadow: -29px 29px 23px 0px rgba(0, 0, 0, 0.78);
+}
+
+#goal-list {
+    align-self:flex-start;
+    flex-grow: 1;
+    height: 15em;
+    border: 1px solid #04245c;
+    border-radius: 20px;
+    overflow-y: auto;
+    width: 23em;
+    overflow: auto;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+#goal-input {
+    align-self: center;
+}
+
+#addGoalBtn {
+    align-self: center;
+    margin-top: 10px;
+}
+
+/* ________Goals remove button__________*/
+.removeBtn {
+    font-size: 10px;
+    font-weight: bolder;
+    padding: 4px 8px;
+    background-color: #e9f5f6;
+    color: #04245c;
+    border: 1px solid #3bc0f9;
+    border-radius: 10px;
+}
+
+#advisorx {
+    width: 100px;
+    position: relative;
+    bottom: 125px;
+    left: 165px;
+    border-radius: 20px;
+    box-shadow: 35px 36px 26px 21px rgba(0, 0, 0, 0.78);
+}
 
 /*___________________________Advisor Modal_____________________ */
 .advisorModalClass {
@@ -102,4 +235,32 @@ h1 {
     border-radius: 15px;
     width: 80%;
     max-width: 500px;
+}
+
+footer {
+    text-align: center;
+}
+
+footer .card {
+    background-color: #0371a1;
+    box-shadow: 0 0 10px 15px #0371a1;
+    box-shadow: #0371a1;
+}
+
+footer .card-footer {
+    width: 100%;
+}
+
+
+
+footer nav {
+    width: 100%;
+}
+
+/*change color of footer text and links*/
+footer a,
+footer p,
+.title,
+.subtitle {
+    color: #fff;
 }
