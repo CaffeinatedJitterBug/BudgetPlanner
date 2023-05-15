@@ -89,6 +89,27 @@ function fileOCR(event) {
 
 //__________________Set-Budget-Button___________________
 //Michael Tranquillo
+//set submit button for budget section that takes budget as total and savings as a percentage
+//Michael Tranquillo
+budgetInput.addEventListener("click", function (event) {
+  event.preventDefault();
+  budget = setBudget.value;
+  let savings = setSavings.value;
+  // savingsAmount = will convert the budget number into the savings percentage from the whole number you chose.
+  // toFixed(2) = will round the number to two decimal places.
+  savingsAmount = (Math.floor(budget / 100) * savings).toFixed(2);
+  // Set local storage for the budget and savings amount
+  localStorage.setItem('budget', budget);
+  localStorage.setItem('savingsAmount', savingsAmount);
+  // Set local storage for the expense item and amount arrays
+  localStorage.setItem('expenseItemArr', JSON.stringify(expenseItemArr));
+  localStorage.setItem('expenseAmountArr', JSON.stringify(expenseAmountArr));
+  renderGraph();
+});
+
+
+//__________________Set-expense-Button__________________
+//Michael Tranquillo
 manualInput.addEventListener("click", function (event) {
   event.preventDefault();
   const expenseItem = document.querySelector(".expense-item-input");
