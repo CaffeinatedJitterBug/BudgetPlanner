@@ -93,7 +93,7 @@ body {
 
 /*___________Pie Chart containers and pie chart__________*/
 #overviewx {
-    border-radius: 150px;
+    border-radius: 200px;
     width: 65%;
     padding: 40px;
     height: 70%;
@@ -126,7 +126,7 @@ body {
 /*____________Expense Container___________*/
 #spendingx {
     width: 369%;
-    height: 175%;
+    height: 200%;
     border-radius: 20px;
 }
 
