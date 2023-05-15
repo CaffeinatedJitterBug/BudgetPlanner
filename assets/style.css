@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+:root {
+    --ice-light: #65cff7;
+    --pane-padding: 5px 42px;
+  }
+
 /*___________________________Pie Chart_____________________ */
 canvas {
     max-width: 400px;
@@ -23,18 +28,15 @@ h1 {
     background: linear-gradient(270deg, rgba(2, 66, 92, 1) 5%, rgba(101, 207, 247, 1) 50%, rgba(2, 66, 92, 1) 95%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-<<<<<<< HEAD
 }
 
-=======
-  }
   
 /*___________________________body_________________________ */
 body {
-    background-color: #04245c;
+    background-color: #02122f;
     font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    font-size: 1.2em;
+    font-weight: 500;
+    font-size: 1.3em;
     line-height: 1.5;
     color: #02425c;
 }
@@ -47,7 +49,6 @@ body {
     background-color: #cde4f3;
     padding: 2em 0;
 }
->>>>>>> origin/main
 
 /*___________________________Header_______________________ */
 
@@ -59,11 +60,11 @@ body {
     /*li-background*/
     padding: 0.4rem 1rem;
     border-radius: 20px;
-    background-color: #e9f5f6;
+    background-color: transparent;
     /*li-border*/
-    border: #3bc0f9 2px solid;
+    border: none;
     /*li-text-style*/
-    color: #04245c;
+    color: #0371a1;
     font-weight: 600;
     /*li-spacing*/
     gap: 20px;
@@ -74,7 +75,6 @@ body {
 
 .header-title {
     height: 17em;
-    background-image: url(./media/2\ -\ using\ blue\ colors\ cool\ colors\ from\ dark\ to\ lig.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -133,4 +133,31 @@ body {
     border-radius: 15px;
     width: 80%;
     max-width: 500px;
+}
+
+footer {
+    text-align: center;
+}
+
+footer .card {
+    background-color: #0371a1;
+    box-shadow: 0 0 10px 15px #0371a1;
+    box-shadow: #0371a1;
+}
+footer .card-footer {
+    width: 100%;
+}
+
+
+
+footer nav {
+    width: 100%;
+}
+
+/*change color of footer text and links*/
+footer a,
+footer p,
+.title,
+.subtitle  {
+    color: #fff;
 }

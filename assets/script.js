@@ -181,9 +181,9 @@ function renderGraph() {
       datasets: [{
         data: [moneyLeft, savingsAmount, moneySpent],
         backgroundColor: [ // change colors here to match theme
-          'rgba(54, 162, 235, 0.7)',
-          'rgba(75, 192, 192, 0.7)',
-          'rgba(255, 99, 132, 0.7)'
+          'rgba(54, 162, 235, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(255, 99, 132, 1)'
         ],
         borderColor: [
           'rgba(54, 162, 235, 1)',
@@ -199,16 +199,19 @@ function renderGraph() {
           color: '#fff',
           formatter: function (value, context) {
             return context.chart.data.labels[context.dataIndex];
-          }
+          },
+          anchor: 'center',
+          align: 'center',
+          position: 'relative',
         }
       }
     },
-    reponsive: true,
+    responsive: true, 
     maintainAspectRatio: true,
     legend: {
       display: false
     }
-  });
+  });   
 }
 
 //_____________ Add/Render Goal using local storage______________
