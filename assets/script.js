@@ -134,6 +134,7 @@ function renderExpense() {
 
     const removeBtn = document.createElement('button');
     removeBtn.textContent = 'X';
+    removeBtn.setAttribute('class', 'removeBtn');
     li.appendChild(removeBtn);
 
     removeBtn.addEventListener('click', function () {
