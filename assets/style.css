@@ -127,25 +127,33 @@ body {
 }
 
 /*________goals container________*/
+#goalie {
+    max-height: 216.75px;
+}
+
 #goalsx {
-    /* position: relative; */
-    height: 200%;
-    width: 35%;
-    bottom: 125px;
-    left: 55%;
+    position: relative;
+    height: 175%;
+    width: 60%;
+    bottom: 250px;
+    left: 5%;
     border-radius: 20px;
 }
 
-/* #goalsx {
-    position: absolute;
-    height: 375px;
-    width: 55%;
-    bottom: -130px;
-    left: 35%;
-    border-radius: 20px;
-    max-height: 375px;
+#goal-list {
+    flex-grow: 1;
+    max-height: 296.13px;
     overflow-y: auto;
-} */
+}
+
+#goal-input {
+    align-self: center;
+}
+
+#addGoalBtn {
+    align-self: center;
+    margin-top: 10px;
+}
 
 /* ________Goals remove button__________*/
 .removeBtn {
@@ -158,30 +166,13 @@ body {
     border-radius: 10px;
 }
 
-
-/*________advisor container________*/
-#advisorxWidth {
-    width: 40%;
-}
-
 #advisorx {
-    /* position: relative; */
-    bottom: 150px;
-    right: 175px;
+    position: relative;
+    bottom: 125px;
+    left: 165px;
+    width: 100px;
     border-radius: 20px;
 }
-
-/* #advisorx {
-    position: absolute;
-    height: 150px;
-    width: 60%;
-    bottom: -50px;
-    left: 28%;
-    border-radius: 20px;
-} */
-
-
-
 
 /*___________________________Advisor Modal_____________________ */
 .advisorModalClass {
