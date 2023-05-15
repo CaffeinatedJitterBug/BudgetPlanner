@@ -94,15 +94,15 @@ body {
 /*___________Pie Chart containers and pie chart__________*/
 #overviewx {
     border-radius: 150px;
-    width: 50%;
+    width: 60%;
     padding: 40px;
-    height: 55%;
+    height: 70%;
 }
 
 #pie-chart-container {
     position: relative;
     background: transparent;
-    bottom: 45%;
+    bottom: 30%;
     left: 45%;
 }
 
@@ -111,6 +111,77 @@ body {
     height: 400px;
     z-index: 1;
 }
+
+/*____________Budget Container___________*/
+#budgetx {
+    width: 230%;
+    height: 20%;
+    border-radius: 20px;
+}
+
+/*____________Expense Container___________*/
+#spendingx {
+    width: 369%;
+    height: 175%;
+    border-radius: 20px;
+}
+
+/*________goals container________*/
+#goalsx {
+    /* position: relative; */
+    height: 200%;
+    width: 35%;
+    bottom: 125px;
+    left: 55%;
+    border-radius: 20px;
+}
+
+/* #goalsx {
+    position: absolute;
+    height: 375px;
+    width: 55%;
+    bottom: -130px;
+    left: 35%;
+    border-radius: 20px;
+    max-height: 375px;
+    overflow-y: auto;
+} */
+
+/* ________Goals remove button__________*/
+.removeBtn {
+    font-size: 10px;
+    font-weight: bolder;
+    padding: 4px 8px;
+    background-color: #e9f5f6;
+    color: #04245c;
+    border: 1px solid #3bc0f9;
+    border-radius: 10px;
+}
+
+
+/*________advisor container________*/
+#advisorxWidth {
+    width: 40%;
+}
+
+#advisorx {
+    /* position: relative; */
+    bottom: 150px;
+    right: 175px;
+    border-radius: 20px;
+}
+
+/* #advisorx {
+    position: absolute;
+    height: 150px;
+    width: 60%;
+    bottom: -50px;
+    left: 28%;
+    border-radius: 20px;
+} */
+
+
+
 
 /*___________________________Advisor Modal_____________________ */
 .advisorModalClass {
@@ -134,17 +205,6 @@ body {
     border-radius: 15px;
     width: 80%;
     max-width: 500px;
-}
-
-/* ________Goals remove button__________*/
-.removeBtn {
-    font-size: 10px;
-    font-weight: bolder;
-    padding: 4px 8px;
-    background-color: #e9f5f6;
-    color: #04245c;
-    border: 1px solid #3bc0f9;
-    border-radius: 10px;
 }
 
 footer {
