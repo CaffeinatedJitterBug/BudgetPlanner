@@ -144,7 +144,6 @@ function renderExpense() {
       renderExpense();
       renderGraph();
     });
-    
   }
 
   moneySpent = updatedMoneySpent;
@@ -239,10 +238,25 @@ function renderGoals() {
   for (let i = 0; i < storedGoals.length; i++) {
     const goal = storedGoals[i];
     const li = document.createElement('li');
-    li.textContent = goal;
+    li.textContent = goal + ' ';
     goalList.appendChild(li);
+
+    const removeGoal = document.createElement('button');
+    removeGoal.setAttribute('class', 'removeBtn');
+    removeGoal.textContent = "Goal Met";
+    li.appendChild(removeGoal);
+
+    removeGoal.addEventListener('click', function () {
+      li.remove();
+      storedGoals.splice(i, 1);
+      localStorage.setItem('goals', JSON.stringify(storedGoals));
+    })
   }
-} /*EO*/
+}
+
+
+
+/*EO*/
 
 
 
