@@ -25,6 +25,7 @@ If you have troubles with your own set goals, we have an API to help find a fina
 With our receipts API, you are able to upload a picture of a receipt, and it will automatically instert that data needed in the expense section. 
 
 ## Problems Faced and Solutions
+* At times, the chart will not render correctly when inputing an expense and/or goal. To fix this, clear local storage of last item or completely. 
 
 ## Future Implementations
 * User login: To keep tract of multiple accounts if needed, and access from multiple devices.
