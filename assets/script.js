@@ -134,6 +134,7 @@ function renderExpense() {
 
     const removeBtn = document.createElement('button');
     removeBtn.textContent = 'X';
+    removeBtn.setAttribute('class', 'removeBtn');
     li.appendChild(removeBtn);
 
     removeBtn.addEventListener('click', function () {
@@ -144,7 +145,7 @@ function renderExpense() {
       renderExpense();
       renderGraph();
     });
-    
+
   }
 
   moneySpent = updatedMoneySpent;
@@ -206,12 +207,12 @@ function renderGraph() {
         }
       }
     },
-    responsive: true, 
+    responsive: true,
     maintainAspectRatio: true,
     legend: {
       display: false
     }
-  });   
+  });
 }
 
 //_____________ Add/Render Goal using local storage______________
@@ -242,8 +243,19 @@ function renderGoals() {
   for (let i = 0; i < storedGoals.length; i++) {
     const goal = storedGoals[i];
     const li = document.createElement('li');
-    li.textContent = goal;
+    li.textContent = goal + ' ';
     goalList.appendChild(li);
+
+    const removeGoal = document.createElement('button');
+    removeGoal.setAttribute('class', 'removeBtn');
+    removeGoal.textContent = "Goal Met";
+    li.appendChild(removeGoal);
+
+    removeGoal.addEventListener('click', function () {
+      li.remove();
+      storedGoals.splice(i, 1);
+      localStorage.setItem('goals', JSON.stringify(storedGoals));
+    })
   }
 } /*EO*/
 
