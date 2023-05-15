@@ -140,10 +140,12 @@ body {
     margin: 1em 1em;
     flex-grow: 1;
     height: 11em;
-    overflow: scroll;
+    overflow: auto;
     width: auto;
     overflow-x: auto;
     border: 1px solid #04245c;
+    border-radius: 20px;
+    padding: 5px
 }
 
 .expense-spacing {
@@ -166,11 +168,15 @@ body {
 }
 
 #goal-list {
+    align-self:flex-start;
     flex-grow: 1;
-    max-height: 296.13px;
+    height: 15em;
+    border: 1px solid #04245c;
+    border-radius: 20px;
     overflow-y: auto;
-    max-width: 258.8px;
-    overflow-x: auto;
+    width: 23em;
+    overflow: auto;
+    padding: 5px;
 }
 
 #goal-input {
