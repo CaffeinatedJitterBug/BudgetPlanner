@@ -60,11 +60,11 @@ body {
     /*li-background*/
     padding: 0.4rem 1rem;
     border-radius: 20px;
-    background-color: #e9f5f6;
+    background-color: #transparent;
     /*li-border*/
-    border: #3bc0f9 2px solid;
+    border: none;
     /*li-text-style*/
-    color: #04245c;
+    color: #0371a1;
     font-weight: 600;
     /*li-spacing*/
     gap: 20px;
@@ -142,6 +142,7 @@ footer {
 footer .card {
     background-color: #0371a1;
     box-shadow: 0 0 10px 15px #0371a1;
+    box-shadow: #0371a1;
 }
 footer .card-footer {
     width: 100%;
