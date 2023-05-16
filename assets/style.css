@@ -171,6 +171,16 @@ body {
     padding: 0em 2em;
 }
 
+.inline-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#expense-submit {
+    margin-right: 10px;
+}
+
 /*________goals container________*/
 #goalie {
     max-height: 216.75px;
