@@ -42,6 +42,8 @@ With our receipts API, you are able to upload a picture of a receipt, and it wil
 
 ## Link to Deployed Website
 
+https://caffeinatedjitterbug.github.io/BudgetPlanner/
+
 ## Credits
 * **Amy Green**
 * **Erik Olson**
@@ -49,9 +51,11 @@ With our receipts API, you are able to upload a picture of a receipt, and it wil
 
 ### Resources
 
-* Free OCR API: https://ocr.space/ocrapi : for pulling information out of photos. 
+* Free OCR API: https://ocr.space/ocrapi : for pulling numbers out of photos (Such as receipts). 
 
-* 
+* MapQuest API: https://developer.mapquest.com/documentation/geocoding-api/ : for searching for advisors in the city entered within the input. 
+
+*  Ladislav Jarabek: Coding Bootcamp Instructor
 
 mit
 
