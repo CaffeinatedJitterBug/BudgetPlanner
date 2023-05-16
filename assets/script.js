@@ -76,7 +76,7 @@ async function fileOCR(event) {
   const ocrKey = 'K86624004988957';
   const fileName = document.getElementById('receipt').files[0];
   const ocrURL = 'https://api.ocr.space/parse/image';
-  const formData  = new FormData();
+  const formData = new FormData();
 
   formData.append('apikey', ocrKey);
   formData.append('file', fileName);
@@ -85,17 +85,17 @@ async function fileOCR(event) {
     method: 'POST',
     body: formData
   })
-    .then(function(response) {
+    .then(function (response) {
       return response.json();
     })
-    .then(function(data) {
+    .then(function (data) {
       const nums = data.ParsedResults[0].ParsedText
         .split('\r\n')
-        .map(function(line) { return parseFloat(line) })
-        .filter(function(line) { return !isNaN(line) });
+        .map(function (line) { return parseFloat(line) })
+        .filter(function (line) { return !isNaN(line) });
       let biggestNum = 0;
 
-      for (let x=0; x<nums.length; x++) {
+      for (let x = 0; x < nums.length; x++) {
         if (biggestNum < nums[x]) {
           biggestNum = nums[x];
         }
@@ -265,10 +265,16 @@ const goalList = document.getElementById('goal-list');
 renderGoals();
 
 const addGoalButton = document.getElementById('addGoalBtn');
+const inputField = document.getElementById('goal-input');
+
 addGoalButton.addEventListener('click', addGoal);
+inputField.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    addGoal();
+  }
+});
 
 function addGoal() {
-  const inputField = document.getElementById('goal-input');
   const goalText = inputField.value;
 
   if (goalText) {
