@@ -446,7 +446,7 @@ function mapquestRadiusSearch(apiKey, location) { /*EO*/
 function percentageLeft() {
   const percentageLeft = document.querySelector(".percentage-left");
   const percentage = Math.round((moneyLeft / budget) * 100);
-  percentageLeft.textContent = percentage + "% of your budget remains";
+  percentageLeft.textContent = percentage + "% of your budget remains!";
   if (percentage < 0) {
     percentageLeft.textContent = "Over Budget! If you are having a hard time staying on budget, we recommend contacting a financial advisor!";
     percentageLeft.style.color = "red";

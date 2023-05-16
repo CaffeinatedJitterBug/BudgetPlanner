@@ -31,6 +31,7 @@ ________________________________________________________________________________
 _____________________________________________________________________________________________________________________
 * **Amy**: The OCR API was difficult to navigate and the documentation wasn't completely clear on how to use certain parts of it. To resolve this, multiple attempts were made to work around the errors, such as declaring the file type and giving the file a temporary URL. In the end, instructor support was needed to resolve the issue.
 _____________________________________________________________________________________________________________________
+* **Michael**: The main issue was within the graph itself. Its difficulties lied within pulling data from three sources, and referencing them to eachother to update the graph after every necessary interaction. Most of the solutions came from mathematical arithmetics, such as calculating the whole number savings, and setting it to interact with the whole budget number. This also aplied with the perecntageLeft function, and than also to compare each of the sections towards eachother for the completed graph. 
 
 ## Future Implementations
 * User login: To keep tract of multiple accounts if needed, and access from multiple devices.
