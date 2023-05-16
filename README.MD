@@ -56,7 +56,9 @@ https://caffeinatedjitterbug.github.io/BudgetPlanner/
 
 * Free OCR API: https://ocr.space/ocrapi : for pulling information out of photos. 
 
-* 
+* MapQuest API: https://developer.mapquest.com/documentation/geocoding-api/ : used for getting the closest financial advisor for the city you enter.
+
+* Ladislav Jarabek: Full Stack Bootcamp Instructor.
 
 mit
 
