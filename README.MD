@@ -26,6 +26,7 @@ With our receipts API, you are able to upload a picture of a receipt, and it wil
 
 ## Problems Faced and Solutions
 * At times, the chart will not render correctly when inputing an expense and/or goal. To fix this, clear local storage of last item or completely. 
+* The OCR API was difficult to navigate and the documentation wasn't completely clear on how to use certain parts of it. To resolve this, multiple attempts were made to work around the errors, such as declaring the file type and giving the file a temporary URL. In the end, instructor support was needed to resolve the issue.
 
 ## Future Implementations
 * User login: To keep tract of multiple accounts if needed, and access from multiple devices.

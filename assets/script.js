@@ -94,6 +94,7 @@ async function fileOCR(event) {
         .map(function(line) { return parseFloat(line) })
         .filter(function(line) { return !isNaN(line) });
       let biggestNum = 0;
+      const itemName = 'Receipt';
 
       for (let x=0; x<nums.length; x++) {
         if (biggestNum < nums[x]) {
@@ -101,13 +102,10 @@ async function fileOCR(event) {
         }
       }
 
-      const total = JSON.stringify(biggestNum);
-
-      expenseItemArr.push('Receipt Total');
-      expenseAmountArr.push(total);
+      localStorage.setItem('expenseItemArr', JSON.stringify(itemName));
+      localStorage.setItem('expenseAmountArr', JSON.stringify(biggestNum));
 
       renderExpense();
-      renderGraph();
         
       const getModal = document.querySelector("#budget-modal");
       getModal.classList.remove('is-active');
