@@ -436,10 +436,11 @@ function percentageLeft() {
   if (percentage < 0) {
     percentageLeft.textContent = "Over Budget! If you are having a hard time staying on budget, we recommend contacting a financial advisor!";
     percentageLeft.style.color = "red";
-  } else {
-    //return to default color if not over budget
+  } else if (percentage > 0) {
     percentageLeft.style.color = "black";
-  };
+  } else {
+    percentageLeft.textContent = "Don't forget to add your budget, and your savings!";
+  }
 };
 
 const searchBtn = document.getElementById("advisorSearch")
