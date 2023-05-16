@@ -76,7 +76,10 @@ async function fileOCR(event) {
   const ocrKey = 'K86624004988957';
   const fileName = document.getElementById('receipt').files[0];
   const ocrURL = 'https://api.ocr.space/parse/image';
+
   const formData  = new FormData();
+
+
 
   formData.append('apikey', ocrKey);
   formData.append('file', fileName);
@@ -85,6 +88,7 @@ async function fileOCR(event) {
     method: 'POST',
     body: formData
   })
+
     .then(function(response) {
       return response.json();
     })
@@ -97,10 +101,12 @@ async function fileOCR(event) {
       const itemName = 'Receipt';
 
       for (let x=0; x<nums.length; x++) {
+
         if (biggestNum < nums[x]) {
           biggestNum = nums[x];
         }
       }
+
 
       localStorage.setItem('expenseItemArr', JSON.stringify(itemName));
       localStorage.setItem('expenseAmountArr', JSON.stringify(biggestNum));
@@ -109,16 +115,17 @@ async function fileOCR(event) {
         
       const getModal = document.querySelector("#budget-modal");
       getModal.classList.remove('is-active');
+
     })
 }
 //End AG
 
 //__________________Set-Budget-Button___________________
-//Michael Tranquillo
+//Michael Tranquillo && EO
 //set submit button for budget section that takes budget as total and savings as a percentage
-//Michael Tranquillo
-budgetInput.addEventListener("click", function (event) {
-  event.preventDefault();
+
+
+function budgetInfo() {
   budget = parseFloat(setBudget.value);
   let savings = parseFloat(setSavings.value);
   // savingsAmount = will convert the budget number into the savings percentage from the whole number you chose.
@@ -131,13 +138,26 @@ budgetInput.addEventListener("click", function (event) {
   localStorage.setItem('expenseItemArr', JSON.stringify(expenseItemArr));
   localStorage.setItem('expenseAmountArr', JSON.stringify(expenseAmountArr));
   renderGraph();
+}
+
+budgetInput.addEventListener("click", function (event) {
+  event.preventDefault();
+  budgetInfo();
+});
+
+
+setBudget.addEventListener('keydown', function (event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    setSavings.focus();
+  }
 });
 
 
 //__________________Set-expense-Button__________________
-//Michael Tranquillo
-manualInput.addEventListener("click", function (event) {
-  event.preventDefault();
+//Michael Tranquillo && EO
+
+function expense() {
   const expenseItem = document.querySelector(".expense-item-input");
   const expenseAmount = document.querySelector(".expense-amount-input");
   moneySpent += parseFloat(expenseAmount.value);
@@ -152,14 +172,54 @@ manualInput.addEventListener("click", function (event) {
   //clear the input fields
   expenseItem.value = '';
   expenseAmount.value = '';
+}
+
+manualInput.addEventListener("click", function (event) {
+  event.preventDefault();
+  expense();
 
   getLocalStorage();
   renderExpense();
   renderGraph();
 });
 
+const expenseItem = document.querySelector(".expense-item-input");
+setSavings.addEventListener('keydown', function (event) {
+  if (event.keyCode === 13) {
+    budgetInfo();
+    expenseItem.focus({
+      preventScroll: true
+    });
+  }
+})
+
+const expenseAmount = document.querySelector(".expense-amount-input");
+expenseItem.addEventListener('keydown', function (event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    expenseAmount.focus();
+  }
+})
+
+expenseAmount.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    expense();
+    getLocalStorage();
+    renderExpense();
+    renderGraph();
+    expenseItem.focus();
+  }
+})
+
 // render expense info
 //Michael Tranquillo
+function removeExpense(index) {
+  expenseItemArr.splice(index, 1);
+  expenseAmountArr.splice(index, 1);
+  localStorage.setItem('expenseItemArr', JSON.stringify(expenseItemArr));
+  localStorage.setItem('expenseAmountArr', JSON.stringify(expenseAmountArr));
+}
+
 function renderExpense() {
   const expenseList = document.querySelector('.expense-list');
   expenseList.innerHTML = '';
@@ -188,10 +248,7 @@ function renderExpense() {
     li.appendChild(removeBtn);
 
     removeBtn.addEventListener('click', function () {
-      expenseItemArr.splice(i, 1);
-      expenseAmountArr.splice(i, 1);
-      localStorage.setItem('expenseItemArr', JSON.stringify(expenseItemArr));
-      localStorage.setItem('expenseAmountArr', JSON.stringify(expenseAmountArr));
+      removeExpense();
       renderExpense();
       renderGraph();
     });
@@ -232,14 +289,14 @@ function renderGraph() {
       datasets: [{
         data: [moneyLeft, savingsAmount, moneySpent],
         backgroundColor: [ // change colors here to match theme
-          'rgba(54, 162, 235, 1)',
+          'rgba(14, 14, 204, 1)',
           'rgba(75, 192, 192, 1)',
           'rgba(255, 99, 132, 1)'
         ],
         borderColor: [
           'rgba(54, 162, 235, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(255, 99, 132, 1)'
+          'rgba(36, 197, 237, 1)',
+          'rgba(204, 12, 12, 1)'
         ],
         borderWidth: 1.5
       }]
@@ -274,10 +331,16 @@ const goalList = document.getElementById('goal-list');
 renderGoals();
 
 const addGoalButton = document.getElementById('addGoalBtn');
+const inputField = document.getElementById('goal-input');
+
 addGoalButton.addEventListener('click', addGoal);
+inputField.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    addGoal();
+  }
+});
 
 function addGoal() {
-  const inputField = document.getElementById('goal-input');
   const goalText = inputField.value;
 
   if (goalText) {
@@ -316,7 +379,7 @@ function renderGoals() {
 
 function mapquestRadiusSearch(apiKey, location) { /*EO*/
 
-  const geocodeUrl = "http://www.mapquestapi.com/geocoding/v1/address?key=" + apiKey + "&location=" + location;
+  const geocodeUrl = "https://www.mapquestapi.com/geocoding/v1/address?key=" + apiKey + "&location=" + location;
   fetch(geocodeUrl)
     .then(function (response) {
       return response.json();
@@ -326,7 +389,7 @@ function mapquestRadiusSearch(apiKey, location) { /*EO*/
       const longitude = geocodeData.results[0].locations[0].latLng.lng;
 
 
-      const searchUrl = "http://www.mapquestapi.com/search/v2/radius?key=" + apiKey + "&origin=" + latitude + "," + longitude + "&radius=100";
+      const searchUrl = "https://www.mapquestapi.com/search/v2/radius?key=" + apiKey + "&origin=" + latitude + "," + longitude + "&radius=100";
 
       fetch(searchUrl)
         .then(function (response) {
@@ -396,14 +459,23 @@ function percentageLeft() {
 };
 
 const searchBtn = document.getElementById('advisorSearch')
+const locationInput = document.getElementById("location");
 
 searchBtn.addEventListener('click', function () {
   const apiKey = "RNllwWWXiyhm721laLx5JSKyaoFO4G2b";
-  const locationInput = document.getElementById("location");
   const location = locationInput.value;
-
   mapquestRadiusSearch(apiKey, location);
-}); /*EO*/
+});
+
+locationInput.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    const apiKey = "RNllwWWXiyhm721laLx5JSKyaoFO4G2b";
+    const location = locationInput.value;
+    mapquestRadiusSearch(apiKey, location);
+  }
+});
+
+/*EO*/
 
 
 
