@@ -108,8 +108,23 @@ async function fileOCR(event) {
 //Michael Tranquillo
 //set submit button for budget section that takes budget as total and savings as a percentage
 //Michael Tranquillo
-budgetInput.addEventListener("click", function (event) {
-  event.preventDefault();
+// budgetInput.addEventListener("click", function (event) {
+//   event.preventDefault();
+//   budget = parseFloat(setBudget.value);
+//   let savings = parseFloat(setSavings.value);
+//   // savingsAmount = will convert the budget number into the savings percentage from the whole number you chose.
+//   // toFixed(2) = will round the number to two decimal places.
+//   savingsAmount = (Math.floor(budget / 100) * savings).toFixed(2);
+//   // Set local storage for the budget and savings amount
+//   localStorage.setItem('budget', budget);
+//   localStorage.setItem('savingsAmount', savingsAmount);
+//   // Set local storage for the expense item and amount arrays
+//   localStorage.setItem('expenseItemArr', JSON.stringify(expenseItemArr));
+//   localStorage.setItem('expenseAmountArr', JSON.stringify(expenseAmountArr));
+//   renderGraph();
+// });
+
+function budgetInfo() {
   budget = parseFloat(setBudget.value);
   let savings = parseFloat(setSavings.value);
   // savingsAmount = will convert the budget number into the savings percentage from the whole number you chose.
@@ -122,7 +137,13 @@ budgetInput.addEventListener("click", function (event) {
   localStorage.setItem('expenseItemArr', JSON.stringify(expenseItemArr));
   localStorage.setItem('expenseAmountArr', JSON.stringify(expenseAmountArr));
   renderGraph();
+}
+
+budgetInput.addEventListener("click", function (event) {
+  event.preventDefault();
+  budgetInfo();
 });
+
 
 setBudget.addEventListener('keydown', function (event) {
   if (event.key === 'Enter') {
@@ -134,8 +155,29 @@ setBudget.addEventListener('keydown', function (event) {
 
 //__________________Set-expense-Button__________________
 //Michael Tranquillo
-manualInput.addEventListener("click", function (event) {
-  event.preventDefault();
+// manualInput.addEventListener("click", function (event) {
+//   event.preventDefault();
+//   const expenseItem = document.querySelector(".expense-item-input");
+//   const expenseAmount = document.querySelector(".expense-amount-input");
+//   moneySpent += parseFloat(expenseAmount.value);
+//   // Push the new expense item and amount into the arrays
+//   expenseItemArr.push(expenseItem.value);
+//   expenseAmountArr.push(parseFloat(expenseAmount.value));
+//   // Set local storage for the expense item and amount arrays
+//   localStorage.setItem('expenseItemArr', JSON.stringify(expenseItemArr));
+//   localStorage.setItem('expenseAmountArr', JSON.stringify(expenseAmountArr));
+//   // Set local storage for the money spent
+//   localStorage.setItem('moneySpent', moneySpent);
+//   //clear the input fields
+//   expenseItem.value = '';
+//   expenseAmount.value = '';
+
+//   getLocalStorage();
+//   renderExpense();
+//   renderGraph();
+// });
+
+function expense() {
   const expenseItem = document.querySelector(".expense-item-input");
   const expenseAmount = document.querySelector(".expense-amount-input");
   moneySpent += parseFloat(expenseAmount.value);
@@ -150,11 +192,44 @@ manualInput.addEventListener("click", function (event) {
   //clear the input fields
   expenseItem.value = '';
   expenseAmount.value = '';
+}
+
+manualInput.addEventListener("click", function (event) {
+  event.preventDefault();
+  expense();
 
   getLocalStorage();
   renderExpense();
   renderGraph();
 });
+
+const expenseItem = document.querySelector(".expense-item-input");
+setSavings.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    budgetInfo();
+    expenseItem.focus({
+      preventScroll: true
+    });
+  }
+})
+
+const expenseAmount = document.querySelector(".expense-amount-input");
+expenseItem.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    expenseAmount.focus();
+  }
+})
+
+expenseAmount.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    expense();
+    getLocalStorage();
+    renderExpense();
+    renderGraph();
+    expenseItem.focus();
+  }
+})
 
 // render expense info
 //Michael Tranquillo
