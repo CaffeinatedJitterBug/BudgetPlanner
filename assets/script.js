@@ -105,11 +105,11 @@ async function fileOCR(event) {
 //End AG
 
 //__________________Set-Budget-Button___________________
-//Michael Tranquillo
+//Michael Tranquillo && EO
 //set submit button for budget section that takes budget as total and savings as a percentage
-//Michael Tranquillo
-budgetInput.addEventListener("click", function (event) {
-  event.preventDefault();
+
+
+function budgetInfo() {
   budget = parseFloat(setBudget.value);
   let savings = parseFloat(setSavings.value);
   // savingsAmount = will convert the budget number into the savings percentage from the whole number you chose.
@@ -122,13 +122,26 @@ budgetInput.addEventListener("click", function (event) {
   localStorage.setItem('expenseItemArr', JSON.stringify(expenseItemArr));
   localStorage.setItem('expenseAmountArr', JSON.stringify(expenseAmountArr));
   renderGraph();
+}
+
+budgetInput.addEventListener("click", function (event) {
+  event.preventDefault();
+  budgetInfo();
+});
+
+
+setBudget.addEventListener('keydown', function (event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    setSavings.focus();
+  }
 });
 
 
 //__________________Set-expense-Button__________________
-//Michael Tranquillo
-manualInput.addEventListener("click", function (event) {
-  event.preventDefault();
+//Michael Tranquillo && EO
+
+function expense() {
   const expenseItem = document.querySelector(".expense-item-input");
   const expenseAmount = document.querySelector(".expense-amount-input");
   moneySpent += parseFloat(expenseAmount.value);
@@ -143,11 +156,44 @@ manualInput.addEventListener("click", function (event) {
   //clear the input fields
   expenseItem.value = '';
   expenseAmount.value = '';
+}
+
+manualInput.addEventListener("click", function (event) {
+  event.preventDefault();
+  expense();
 
   getLocalStorage();
   renderExpense();
   renderGraph();
 });
+
+const expenseItem = document.querySelector(".expense-item-input");
+setSavings.addEventListener('keydown', function (event) {
+  if (event.keyCode === 13) {
+    budgetInfo();
+    expenseItem.focus({
+      preventScroll: true
+    });
+  }
+})
+
+const expenseAmount = document.querySelector(".expense-amount-input");
+expenseItem.addEventListener('keydown', function (event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    expenseAmount.focus();
+  }
+})
+
+expenseAmount.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    expense();
+    getLocalStorage();
+    renderExpense();
+    renderGraph();
+    expenseItem.focus();
+  }
+})
 
 // render expense info
 //Michael Tranquillo
@@ -269,10 +315,16 @@ const goalList = document.getElementById('goal-list');
 renderGoals();
 
 const addGoalButton = document.getElementById('addGoalBtn');
+const inputField = document.getElementById('goal-input');
+
 addGoalButton.addEventListener('click', addGoal);
+inputField.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    addGoal();
+  }
+});
 
 function addGoal() {
-  const inputField = document.getElementById('goal-input');
   const goalText = inputField.value;
 
   if (goalText) {
@@ -391,14 +443,23 @@ function percentageLeft() {
 };
 
 const searchBtn = document.getElementById('advisorSearch')
+const locationInput = document.getElementById("location");
 
 searchBtn.addEventListener('click', function () {
   const apiKey = "RNllwWWXiyhm721laLx5JSKyaoFO4G2b";
-  const locationInput = document.getElementById("location");
   const location = locationInput.value;
-
   mapquestRadiusSearch(apiKey, location);
-}); /*EO*/
+});
+
+locationInput.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    const apiKey = "RNllwWWXiyhm721laLx5JSKyaoFO4G2b";
+    const location = locationInput.value;
+    mapquestRadiusSearch(apiKey, location);
+  }
+});
+
+/*EO*/
 
 
 
