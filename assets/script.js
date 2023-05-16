@@ -100,6 +100,17 @@ async function fileOCR(event) {
           biggestNum = nums[x];
         }
       }
+
+      const total = JSON.stringify(biggestNum);
+
+      expenseItemArr.push('Receipt Total');
+      expenseAmountArr.push(total);
+
+      renderExpense();
+      renderGraph();
+        
+      const getModal = document.querySelector("#budget-modal");
+      getModal.classList.remove('is-active');
     })
 }
 //End AG
