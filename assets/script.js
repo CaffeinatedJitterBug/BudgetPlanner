@@ -124,6 +124,13 @@ budgetInput.addEventListener("click", function (event) {
   renderGraph();
 });
 
+setBudget.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    setSavings.focus();
+  }
+});
+
 
 //__________________Set-expense-Button__________________
 //Michael Tranquillo
