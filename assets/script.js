@@ -93,8 +93,8 @@ function fileOCR(event) {
 //Michael Tranquillo
 budgetInput.addEventListener("click", function (event) {
   event.preventDefault();
-  budget = setBudget.value;
-  let savings = setSavings.value;
+  budget = parseFloat(setBudget.value);
+  let savings = parseFloat(setSavings.value);
   // savingsAmount = will convert the budget number into the savings percentage from the whole number you chose.
   // toFixed(2) = will round the number to two decimal places.
   savingsAmount = (Math.floor(budget / 100) * savings).toFixed(2);
@@ -234,6 +234,7 @@ function renderGraph() {
       display: false
     }
   });
+  percentageLeft();
 }
 
 //_____________ Add/Render Goal using local storage______________
@@ -349,6 +350,21 @@ function mapquestRadiusSearch(apiKey, location) { /*EO*/
       }
     });
 }
+
+//______________Show percentage of budget spent_______________
+//show percentage of remaining budget and add it as text to the html element percentage-left and change text and text color if over budget
+function percentageLeft() {
+  const percentageLeft = document.querySelector('.percentage-left');
+  const percentage = Math.round((moneyLeft / budget) * 100);
+  percentageLeft.textContent = percentage + '%';
+  if (percentage < 0) {
+    percentageLeft.textContent = 'Over Budget! If you are having a hard time staying on budget, we recommend contacting a financial advisor!';
+    percentageLeft.style.color = 'red';
+  } else {
+    //return to default color if not over budget
+    percentageLeft.style.color = 'black';
+  };
+};
 
 const searchBtn = document.getElementById('advisorSearch')
 
