@@ -130,6 +130,11 @@ body {
 }
 
 /*____________Budget Container___________*/
+.maintainWidth {
+    width: 13.804em;
+    max-width: 13.804em;
+}
+
 #budgetx {
     width: 160%;
     height: 23%;
@@ -231,8 +236,8 @@ body {
 #advisorx {
     width: 100px;
     position: relative;
-    bottom: 125px;
-    left: 165px;
+    bottom: 93px;
+    left: -105px;
     border-radius: 20px;
     box-shadow: 35px 36px 26px 21px rgba(0, 0, 0, 0.78);
 }
