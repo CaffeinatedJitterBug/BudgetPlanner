@@ -37,7 +37,7 @@ h2 {
 }
 
 
-  
+
 /*___________________________body_________________________ */
 body {
     background-color: #02122f;
@@ -126,7 +126,7 @@ body {
 .larger-pie-chart {
     width: 400px;
     height: 400px;
-    z-index: 1; 
+    z-index: 1;
 }
 
 /*____________Budget Container___________*/
@@ -166,6 +166,16 @@ body {
     padding: 0em 2em;
 }
 
+.inline-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#expense-submit {
+    margin-right: 10px;
+}
+
 /*________goals container________*/
 #goalie {
     max-height: 216.75px;
@@ -182,7 +192,7 @@ body {
 }
 
 #goal-list {
-    align-self:flex-start;
+    align-self: flex-start;
     flex-grow: 1;
     height: 15em;
     border: 1px solid #04245c;
