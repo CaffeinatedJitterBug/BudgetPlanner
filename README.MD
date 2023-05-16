@@ -26,7 +26,11 @@ With our receipts API, you are able to upload a picture of a receipt, and it wil
 
 ## Problems Faced and Solutions
 * At times, the chart will not render correctly when inputing an expense and/or goal. To fix this, clear local storage of last item or completely. 
+
+
+
 * **Erik**: Local storage would not properly be removed, and when entering another expense, would pull the previously removed expenses as well. The solution was to make the remove button into a function in itself, and call it from the expense function, so that it can properly remove and update the necessary information. 
+
 
 ## Future Implementations
 * User login: To keep tract of multiple accounts if needed, and access from multiple devices.
