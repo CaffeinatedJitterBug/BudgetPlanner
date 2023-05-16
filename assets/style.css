@@ -37,7 +37,7 @@ h2 {
 }
 
 
-  
+
 /*___________________________body_________________________ */
 body {
     background-color: #02122f;
@@ -126,10 +126,15 @@ body {
 .larger-pie-chart {
     width: 400px;
     height: 400px;
-    z-index: 1; 
+    z-index: 1;
 }
 
 /*____________Budget Container___________*/
+.maintainWidth {
+    width: 13.804em;
+    max-width: 13.804em;
+}
+
 #budgetx {
     width: 160%;
     height: 23%;
@@ -182,7 +187,7 @@ body {
 }
 
 #goal-list {
-    align-self:flex-start;
+    align-self: flex-start;
     flex-grow: 1;
     height: 15em;
     border: 1px solid #04245c;
@@ -221,8 +226,8 @@ body {
 #advisorx {
     width: 100px;
     position: relative;
-    bottom: 125px;
-    left: 165px;
+    bottom: 93px;
+    left: -105px;
     border-radius: 20px;
     box-shadow: 35px 36px 26px 21px rgba(0, 0, 0, 0.78);
 }
