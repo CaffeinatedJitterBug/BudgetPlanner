@@ -36,6 +36,7 @@ With our receipts API, you are able to upload a picture of a receipt, and it wil
 * Expense categories: So that you can see the percentage % of each type of expense, and better plan that way. 
 * Colour customization for graphs.
 * Set goals into its own page with extra customizations, and js implementations, such as full savings percentage, et cetera.
+* With the mapQuest API, we would like to pull a gps location as an option other than a manual city input to find a local Advisor(s).
 
 ## Wireframe
 ![WIREFRAME](https://github.com/CaffeinatedJitterBug/BudgetPlanner/assets/117021869/cdb80972-70f1-4535-8c64-89fbe0d8068d)
