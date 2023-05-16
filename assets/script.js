@@ -197,6 +197,13 @@ expenseAmount.addEventListener('keydown', function (event) {
 
 // render expense info
 //Michael Tranquillo
+function removeExpense(index) {
+  expenseItemArr.splice(index, 1);
+  expenseAmountArr.splice(index, 1);
+  localStorage.setItem('expenseItemArr', JSON.stringify(expenseItemArr));
+  localStorage.setItem('expenseAmountArr', JSON.stringify(expenseAmountArr));
+}
+
 function renderExpense() {
   const expenseList = document.querySelector('.expense-list');
   expenseList.innerHTML = '';
@@ -225,10 +232,7 @@ function renderExpense() {
     li.appendChild(removeBtn);
 
     removeBtn.addEventListener('click', function () {
-      expenseItemArr.splice(i, 1);
-      expenseAmountArr.splice(i, 1);
-      localStorage.setItem('expenseItemArr', JSON.stringify(expenseItemArr));
-      localStorage.setItem('expenseAmountArr', JSON.stringify(expenseAmountArr));
+      removeExpense();
       renderExpense();
       renderGraph();
     });
@@ -269,14 +273,14 @@ function renderGraph() {
       datasets: [{
         data: [moneyLeft, savingsAmount, moneySpent],
         backgroundColor: [ // change colors here to match theme
-          'rgba(54, 162, 235, 1)',
+          'rgba(14, 14, 204, 1)',
           'rgba(75, 192, 192, 1)',
           'rgba(255, 99, 132, 1)'
         ],
         borderColor: [
           'rgba(54, 162, 235, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(255, 99, 132, 1)'
+          'rgba(36, 197, 237, 1)',
+          'rgba(204, 12, 12, 1)'
         ],
         borderWidth: 1.5
       }]
@@ -359,7 +363,7 @@ function renderGoals() {
 
 function mapquestRadiusSearch(apiKey, location) { /*EO*/
 
-  const geocodeUrl = "http://www.mapquestapi.com/geocoding/v1/address?key=" + apiKey + "&location=" + location;
+  const geocodeUrl = "https://www.mapquestapi.com/geocoding/v1/address?key=" + apiKey + "&location=" + location;
   fetch(geocodeUrl)
     .then(function (response) {
       return response.json();
@@ -369,7 +373,7 @@ function mapquestRadiusSearch(apiKey, location) { /*EO*/
       const longitude = geocodeData.results[0].locations[0].latLng.lng;
 
 
-      const searchUrl = "http://www.mapquestapi.com/search/v2/radius?key=" + apiKey + "&origin=" + latitude + "," + longitude + "&radius=100";
+      const searchUrl = "https://www.mapquestapi.com/search/v2/radius?key=" + apiKey + "&origin=" + latitude + "," + longitude + "&radius=100";
 
       fetch(searchUrl)
         .then(function (response) {

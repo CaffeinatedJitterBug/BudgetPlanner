@@ -26,21 +26,26 @@ With our receipts API, you are able to upload a picture of a receipt, and it wil
 
 ## Problems Faced and Solutions
 * At times, the chart will not render correctly when inputing an expense and/or goal. To fix this, clear local storage of last item or completely. 
+* **Erik**: Local storage would not properly be removed, and when entering another expense, would pull the previously removed expenses as well. The solution was to make the remove button into a function in itself, and call it from the expense function, so that it can properly remove and update the necessary information. 
 
 ## Future Implementations
 * User login: To keep tract of multiple accounts if needed, and access from multiple devices.
 * Personalized features that would take the information from accounts, and implement them into different text areas, and more. 
+* Family organizations: Could take multiple single budget profiles, or set them and create a graph representing them as a full.
 * Monthly statements that iterates over past budget plans, to better keep tract of goals and past expenses. 
 * Expense categories: So that you can see the percentage % of each type of expense, and better plan that way. 
 * Colour customization for graphs.
 * Set goals into its own page with extra customizations, and js implementations, such as full savings percentage, et cetera.
+* With the mapQuest API, we would like to pull a gps location as an option other than a manual city input to find a local Advisor(s).
 
 ## Wireframe
 ![WIREFRAME](https://github.com/CaffeinatedJitterBug/BudgetPlanner/assets/117021869/cdb80972-70f1-4535-8c64-89fbe0d8068d)
 
-## Screenshot of our Deployed Application
-
 ## Link to Deployed Website
+https://caffeinatedjitterbug.github.io/BudgetPlanner/
+
+## Screenshot of our Deployed Application
+![DEPLOYEDAPP](https://github.com/CaffeinatedJitterBug/BudgetPlanner/assets/117021869/dd07f916-8423-4139-9ee9-ed4227523b99)
 
 ## Credits
 * **Amy Green**
@@ -51,7 +56,9 @@ With our receipts API, you are able to upload a picture of a receipt, and it wil
 
 * Free OCR API: https://ocr.space/ocrapi : for pulling information out of photos. 
 
-* 
+* MapQuest API: https://developer.mapquest.com/documentation/geocoding-api/ : used for getting the closest financial advisor for the city you enter.
+
+* Ladislav Jarabek: Full Stack Bootcamp Instructor.
 
 mit
 
