@@ -148,7 +148,7 @@ body {
 
 /*____________Expense Container___________*/
 #spendingx {
-    width: 365%;
+    width: 300%;
     height: 100%;
     border-radius: 20px;
     box-shadow: 42px 2px 26px 11px rgba(0, 0, 0, 0.78);
@@ -160,7 +160,7 @@ body {
     height: 11em;
     overflow: auto;
     width: auto;
-    overflow-x: auto;
+    /* overflow-x: auto; */
     border: 1px solid #04245c;
     border-radius: 20px;
     padding: 5px
