@@ -393,14 +393,23 @@ function percentageLeft() {
 };
 
 const searchBtn = document.getElementById('advisorSearch')
+const locationInput = document.getElementById("location");
 
 searchBtn.addEventListener('click', function () {
   const apiKey = "RNllwWWXiyhm721laLx5JSKyaoFO4G2b";
-  const locationInput = document.getElementById("location");
   const location = locationInput.value;
-
   mapquestRadiusSearch(apiKey, location);
-}); /*EO*/
+});
+
+locationInput.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    const apiKey = "RNllwWWXiyhm721laLx5JSKyaoFO4G2b";
+    const location = locationInput.value;
+    mapquestRadiusSearch(apiKey, location);
+  }
+});
+
+/*EO*/
 
 
 
