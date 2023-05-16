@@ -307,7 +307,7 @@ function renderGoals() {
 
 function mapquestRadiusSearch(apiKey, location) { /*EO*/
 
-  const geocodeUrl = "http://www.mapquestapi.com/geocoding/v1/address?key=" + apiKey + "&location=" + location;
+  const geocodeUrl = "https://www.mapquestapi.com/geocoding/v1/address?key=" + apiKey + "&location=" + location;
   fetch(geocodeUrl)
     .then(function (response) {
       return response.json();
@@ -317,7 +317,7 @@ function mapquestRadiusSearch(apiKey, location) { /*EO*/
       const longitude = geocodeData.results[0].locations[0].latLng.lng;
 
 
-      const searchUrl = "http://www.mapquestapi.com/search/v2/radius?key=" + apiKey + "&origin=" + latitude + "," + longitude + "&radius=100";
+      const searchUrl = "https://www.mapquestapi.com/search/v2/radius?key=" + apiKey + "&origin=" + latitude + "," + longitude + "&radius=100";
 
       fetch(searchUrl)
         .then(function (response) {
