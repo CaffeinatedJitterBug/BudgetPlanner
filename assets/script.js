@@ -123,6 +123,9 @@ manualInput.addEventListener("click", function (event) {
   localStorage.setItem('expenseAmountArr', JSON.stringify(expenseAmountArr));
   // Set local storage for the money spent
   localStorage.setItem('moneySpent', moneySpent);
+  //clear the input fields
+  expenseItem.value = '';
+  expenseAmount.value = '';
 
   getLocalStorage();
   renderExpense();
