@@ -120,10 +120,13 @@ body {
 }
 
 /*____________Budget Container___________*/
+.maintainWidth {
+    width: 13.804em;
+    max-width: 13.804em;
+}
+
 #budgetx {
     width: 160%;
-    max-width: 459.38px;
-    /* max-width: 44em; */
     height: 23%;
     border-radius: 20px;
     line-height: 2.7em;
@@ -134,15 +137,8 @@ body {
 
 
 /*____________Expense Container___________*/
-#maintainWidthSpend {
-    /* max-width: 274.81px; */
-    max-width: 23em;
-}
-
 #spendingx {
     width: 365%;
-    max-width: 697.55px;
-    overflow-x: scroll;
     height: 100%;
     border-radius: 20px;
     box-shadow: 42px 2px 26px 11px rgba(0, 0, 0, 0.78);
