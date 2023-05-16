@@ -37,6 +37,7 @@ h2 {
 }
 
 
+  
 /*___________________________body_________________________ */
 body {
     background-color: #02122f;
@@ -95,6 +96,15 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+/*_________________________Date_________________________*/
+#date {
+    background-color: #0371a1;
+    color: #cde4f3;
+    padding: 1em;
+    width: 100%;
+    border-radius: 20px;
 }
 
 /*___________Pie Chart containers and pie chart__________*/
@@ -187,6 +197,10 @@ body {
     overflow: auto;
     padding: 5px;
     margin-bottom: 20px;
+}
+
+#goal-list li {
+    font-size: 16px;
 }
 
 #goal-input {

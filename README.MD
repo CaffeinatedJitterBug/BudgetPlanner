@@ -49,6 +49,10 @@ With our receipts API, you are able to upload a picture of a receipt, and it wil
 
 ### Resources
 
+* Free OCR API: https://ocr.space/ocrapi : for pulling information out of photos. 
+
+* 
+
 mit
 
 Copyright (c) _2023_ _Amy/Erik/Michael

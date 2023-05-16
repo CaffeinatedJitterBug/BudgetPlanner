@@ -71,18 +71,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
 receiptSubmit.addEventListener('click', fileOCR);
 
-function fileOCR(event) {
+async function fileOCR(event) {
   event.preventDefault();
-  const ocrKey = 'K86624004988957'; //AG
-  //const file = document.getElementById('receipt').files[0].name;
-  const ocrURL = 'https://api.ocr.space/pare/image?apikey=' + ocrKey + '&file=' + file;
+  const ocrKey = 'K86624004988957';
+  const fileName = document.getElementById('receipt').files[0];
+  const ocrURL = 'https://api.ocr.space/parse/image';
+  const formData  = new FormData();
 
-  fetch(ocrURL)
-    .then(function (response) {
+  formData.append('apikey', ocrKey);
+  formData.append('file', fileName);
+
+  fetch(ocrURL, {
+    method: 'POST',
+    body: formData
+  })
+    .then(function(response) {
       return response.json();
     })
-    .then(function () {
-      console.log(response);
+    .then(function(data) {
+      const nums = data.ParsedResults[0].ParsedText
+        .split('\r\n')
+        .map(function(line) { return parseFloat(line) })
+        .filter(function(line) { return !isNaN(line) });
+      let biggestNum = 0;
+
+      for (let x=0; x<nums.length; x++) {
+        if (biggestNum < nums[x]) {
+          biggestNum = nums[x];
+        }
+      }
     })
 }
 //End AG
@@ -93,8 +110,8 @@ function fileOCR(event) {
 //Michael Tranquillo
 budgetInput.addEventListener("click", function (event) {
   event.preventDefault();
-  budget = setBudget.value;
-  let savings = setSavings.value;
+  budget = parseFloat(setBudget.value);
+  let savings = parseFloat(setSavings.value);
   // savingsAmount = will convert the budget number into the savings percentage from the whole number you chose.
   // toFixed(2) = will round the number to two decimal places.
   savingsAmount = (Math.floor(budget / 100) * savings).toFixed(2);
@@ -123,6 +140,9 @@ manualInput.addEventListener("click", function (event) {
   localStorage.setItem('expenseAmountArr', JSON.stringify(expenseAmountArr));
   // Set local storage for the money spent
   localStorage.setItem('moneySpent', moneySpent);
+  //clear the input fields
+  expenseItem.value = '';
+  expenseAmount.value = '';
 
   getLocalStorage();
   renderExpense();
@@ -234,6 +254,7 @@ function renderGraph() {
       display: false
     }
   });
+  percentageLeft();
 }
 
 //_____________ Add/Render Goal using local storage______________
@@ -349,6 +370,21 @@ function mapquestRadiusSearch(apiKey, location) { /*EO*/
       }
     });
 }
+
+//______________Show percentage of budget spent_______________
+//show percentage of remaining budget and add it as text to the html element percentage-left and change text and text color if over budget
+function percentageLeft() {
+  const percentageLeft = document.querySelector('.percentage-left');
+  const percentage = Math.round((moneyLeft / budget) * 100);
+  percentageLeft.textContent = percentage + '%';
+  if (percentage < 0) {
+    percentageLeft.textContent = 'Over Budget! If you are having a hard time staying on budget, we recommend contacting a financial advisor!';
+    percentageLeft.style.color = 'red';
+  } else {
+    //return to default color if not over budget
+    percentageLeft.style.color = 'black';
+  };
+};
 
 const searchBtn = document.getElementById('advisorSearch')
 
