@@ -37,6 +37,7 @@ h2 {
 }
 
 
+  
 /*___________________________body_________________________ */
 body {
     background-color: #02122f;
@@ -191,6 +192,10 @@ body {
     overflow: auto;
     padding: 5px;
     margin-bottom: 20px;
+}
+
+#goal-list li {
+    font-size: 16px;
 }
 
 #goal-input {
