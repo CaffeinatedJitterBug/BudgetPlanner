@@ -98,6 +98,15 @@ body {
     text-align: center;
 }
 
+/*_________________________Date_________________________*/
+#date {
+    background-color: #0371a1;
+    color: #cde4f3;
+    padding: 1em;
+    width: 100%;
+    border-radius: 20px;
+}
+
 /*___________Pie Chart containers and pie chart__________*/
 #overviewx {
     border-radius: 200px;
