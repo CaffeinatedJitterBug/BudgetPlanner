@@ -110,7 +110,7 @@ async function fileOCR(event) {
       localStorage.setItem('expenseAmountArr', JSON.stringify(biggestNum));
 
       renderExpense();
-        
+      renderGraph();
       const getModal = document.querySelector("#budget-modal");
       getModal.classList.remove('is-active');
 
