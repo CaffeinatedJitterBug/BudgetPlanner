@@ -1,7 +1,5 @@
 # Budget Planner
 
-**Table of contents**
-
 ## Our Project
 Our web application is a budget planner that helps you track your spending, set savings goals, and find a financial advisor. 
 You can create a budget, set a savings amount, and track your progress over time. You can also set goals for yourself, such as saving for a down payment on a house or retirement. 
@@ -26,11 +24,12 @@ With our receipts API, you are able to upload a picture of a receipt, and it wil
 
 ## Problems Faced and Solutions
 * At times, the chart will not render correctly when inputing an expense and/or goal. To fix this, clear local storage of last item or completely. 
-
-
-
+_____________________________________________________________________________________________________________________
 * **Erik**: Local storage would not properly be removed, and when entering another expense, would pull the previously removed expenses as well. The solution was to make the remove button into a function in itself, and call it from the expense function, so that it can properly remove and update the necessary information. 
-
+_____________________________________________________________________________________________________________________
+* **Amy**: The OCR API was difficult to navigate and the documentation wasn't completely clear on how to use certain parts of it. To resolve this, multiple attempts were made to work around the errors, such as declaring the file type and giving the file a temporary URL. In the end, instructor support was needed to resolve the issue.
+_____________________________________________________________________________________________________________________
+* **Michael**: The main issue was within the graph itself. Its difficulties lied within pulling data from three sources, and referencing them to eachother to update the graph after every necessary interaction. Most of the solutions came from mathematical arithmetics, such as calculating the whole number savings, and setting it to interact with the whole budget number. This also aplied with the perecntageLeft function, and than also to compare each of the sections towards eachother for the completed graph. 
 
 ## Future Implementations
 * User login: To keep tract of multiple accounts if needed, and access from multiple devices.
