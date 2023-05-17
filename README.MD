@@ -1,7 +1,5 @@
 # Budget Planner
 
-**Table of contents**
-
 ## Our Project
 Our web application is a budget planner that helps you track your spending, set savings goals, and find a financial advisor. 
 You can create a budget, set a savings amount, and track your progress over time. You can also set goals for yourself, such as saving for a down payment on a house or retirement. 
