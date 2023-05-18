@@ -315,3 +315,74 @@ footer p,
 .subtitle {
     color: #fff;
 }
+
+
+/*____media queries_____*/
+
+@media screen and (max-width: 1024px) {
+
+
+    h1 {
+        font-size: 3em;
+        position: relative;
+        bottom: 1em;
+    }
+
+    #date {
+        position: relative;
+        bottom: 200px;
+    }
+
+    #overviewx {
+        width: 90%;
+        position: relative;
+        bottom: 10em;
+    }
+
+    #budgetx {
+        width: 300%;
+        position: relative;
+        bottom: 20em;
+    }
+
+    #spendingx {
+        width: 300%;
+        height: 100%;
+        position: relative;
+        bottom: 15em;
+    }
+
+    #goalsx {
+        position: relative;
+        height: 175%;
+        width: 60%;
+        bottom: 350px;
+        left: 20%;
+    }
+
+    #advisorx {
+        width: 100px;
+        position: relative;
+        bottom: 5em;
+        left: 0px;
+        border-radius: 20px;
+        box-shadow: 35px 36px 26px 21px rgba(0, 0, 0, 0.78);
+    }
+
+}
+
+@media screen and (max-width: 858px) {
+
+    #goal-list {
+        align-self: flex-start;
+        flex-grow: 1;
+        height: 15em;
+        border: 1px solid #04245c;
+        border-radius: 20px;
+        overflow-y: auto;
+        width: 23em;
+        overflow: auto;
+        padding: 5px;
+        margin-bottom: 20px;
+    }
+}
