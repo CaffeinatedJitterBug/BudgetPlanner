@@ -104,10 +104,11 @@ async function fileOCR(event) {
           biggestNum = nums[x];
         }
       }
+      expenseItemArr.push(itemName);
+      expenseAmountArr.push(biggestNum);
 
-
-      localStorage.setItem('expenseItemArr', JSON.stringify(itemName));
-      localStorage.setItem('expenseAmountArr', JSON.stringify(biggestNum));
+      localStorage.setItem('expenseItemArr', JSON.stringify(expenseItemArr));
+      localStorage.setItem('expenseAmountArr', JSON.stringify(expenseAmountArr));
 
       renderExpense();
       renderGraph();
