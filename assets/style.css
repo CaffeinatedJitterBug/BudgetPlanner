@@ -110,7 +110,7 @@ body {
 /*___________Pie Chart containers and pie chart__________*/
 #overviewx {
     border-radius: 200px;
-    width: 68%;
+    width: 73%;
     padding: 40px;
     height: 70%;
     box-shadow: -22px 0px 26px 11px rgba(0, 0, 0, 0.78);
@@ -136,7 +136,7 @@ body {
 }
 
 #budgetx {
-    width: 160%;
+    width: 140%;
     height: 23%;
     border-radius: 20px;
     line-height: 2.7em;
@@ -148,7 +148,7 @@ body {
 
 /*____________Expense Container___________*/
 #spendingx {
-    width: 365%;
+    width: 350%;
     height: 100%;
     border-radius: 20px;
     box-shadow: 42px 2px 26px 11px rgba(0, 0, 0, 0.78);
@@ -160,7 +160,7 @@ body {
     height: 11em;
     overflow: auto;
     width: auto;
-    overflow-x: auto;
+    /* overflow-x: auto; */
     border: 1px solid #04245c;
     border-radius: 20px;
     padding: 5px
@@ -212,7 +212,7 @@ body {
     position: relative;
     height: 175%;
     width: 60%;
-    bottom: 250px;
+    bottom: 175px;
     left: 5%;
     border-radius: 20px;
     box-shadow: -29px 29px 23px 0px rgba(0, 0, 0, 0.78);
@@ -258,7 +258,7 @@ body {
 #advisorx {
     width: 100px;
     position: relative;
-    bottom: 93px;
+    bottom: 100px;
     left: -105px;
     border-radius: 20px;
     box-shadow: 35px 36px 26px 21px rgba(0, 0, 0, 0.78);
