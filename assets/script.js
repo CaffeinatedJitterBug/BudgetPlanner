@@ -239,6 +239,7 @@ function renderExpense() {
 
     const li = document.createElement("li");
     li.textContent = expense + ": $" + amount;
+    li.setAttribute("data-index", i);
     expenseList.appendChild(li);
 
     const removeBtn = document.createElement("button");
@@ -246,8 +247,8 @@ function renderExpense() {
     removeBtn.setAttribute("class", "removeBtn");
     li.appendChild(removeBtn);
 
-    removeBtn.addEventListener("click", function () {
-      removeExpense();
+    removeBtn.addEventListener("click", function (e) {
+      removeExpense(e.target.parentElement.getAttribute("data-index"));
       renderExpense();
       renderGraph();
     });
