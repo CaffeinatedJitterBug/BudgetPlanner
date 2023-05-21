@@ -20,25 +20,60 @@
 
     <!--___________________________Header________________________________-->
     <header>
-        <section class="nav ">
+        <section class="nav section">
             <nav class="level">
-                <div class="level-left"></div>
-                <div class="level-right">
-                    <ul class="is-flex is-justify-content-flex-end list-item">
-                        <li><a href="#budgetx">Set Budget</a></li>
-                        <li><a href="#overviewx">Overview</a></li>
-                        <li><a href="#spendingx">Spendings</a></li>
-                        <li><a href="#goalsx">Goals</a></li>
-                        <li><a href="#advisorx">Find an Advisor</a></li>
+                <div class="navbar-end">
+                    <ul class="is-flex is-justify-content-flex-end list-item" id="nav">
+                        <li class="navLi"><a href="#budgetx">Set Budget</a></li>
+                        <li class="navLi"><a href="#overviewx">Overview</a></li>
+                        <li class="navLi"><a href="#spendingx">Spendings</a></li>
+                        <li class="navLi"><a href="#goalsx">Goals</a></li>
+                        <li class="navLi"><a href="#advisorx">Find an Advisor</a></li>
                     </ul>
+
+                    <div id="dropdownContainer">
+                        <div class="dropdown is-hoverable">
+                            <div class="dropdown-trigger">
+                                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                                    <span>Navigation</span>
+                                    <span class="icon is-small">
+                                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                                <div class="dropdown-content">
+                                    <div class="dropdown-item">
+                                        <li><a href="#budgetx">Set Budget</a></li>
+                                    </div>
+                                    <div class="dropdown-item">
+                                        <li><a href="#overviewx">Overview</a></li>
+                                    </div>
+                                    <div class="dropdown-item">
+                                        <li><a href="#spendingx">Spendings</a></li>
+                                    </div>
+                                    <div class="dropdown-item">
+                                        <li><a href="#goalsx">Goals</a></li>
+                                    </div>
+                                    <div class="dropdown-item">
+                                        <li><a href="#advisorx">Find an Advisor</a></li>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </nav>
         </section>
+
         <section class="title header-title container level">
             <div class="title-position level-item has-text-centered">
                 <h1 class="gradient-text">Budget Planner</h1>
             </div>
         </section>
+
     </header>
     <!--___________________________Date________________________________-->
     <section class="section container center-content">
@@ -54,10 +89,10 @@
                 <div class="columns is-multiline">
 
                     <!-- <div class="container is-flex"> -->
-                    <div class="column is-mobile is-12-tablet is-9-desktop">
+                    <div class="column is-mobile is-12-tablet is-6-desktop">
                         <section class="overview columns is-flex is-flex-direction-column card" id="overviewx">
                             <h2 class="has-text-centered">Overview</h2>
-                            <div class="overview-text column is-6">
+                            <div class="overview-text column is-7">
                                 <p><span class="percentage-left"></span></p>
                                 <p>Following your budget is one of the best things you can do for your financial
                                     health.
@@ -73,8 +108,8 @@
                     </div>
 
                     <div
-                        class="container is-flex is-flex-direction-column is-align-items-center maintainWidth column is-mobile is-12-tablet is-3-desktop">
-                        <section class="budget-set column is-5" id="budgetx">
+                        class="container is-flex is-flex-direction-column is-align-items-center column is-mobile is-12-tablet is-6-desktop">
+                        <section class="budget-set column is-7-desktop" id="budgetx">
                             <form action="">
                                 <h2 class="has-text-centered">Set Budget</h2>
                                 <div class="control">
@@ -92,11 +127,12 @@
                         </section>
 
 
-                        <section class="section is-flex is-justify-content-center maintainWidth">
+                        <div
+                            class="section is-flex is-justify-content-center column is-mobile is-12-tablet is-12-desktop">
                             <!--This section holds both inputs as a group for layout-->
-                            <section class="receipts column is-10" id="spendingx">
+                            <section class="receipts" id="spendingx">
                                 <h2 class="has-text-centered">Spendings</h2>
-                                <ul class="expense-list">
+                                <ul class="expense-list" id="expenseList">
                                 </ul>
                                 <div class="expense-spacing" id="center-content">
 
@@ -127,7 +163,7 @@
                                 </div>
                             </section>
                             <!-- </div> -->
-                        </section>
+                        </div>
                     </div>
 
 
@@ -145,8 +181,9 @@
             <div class="columns is-multiline">
 
                 <!-- <section class="goal-overview section"> -->
-                <div class="container is-flex is-justify-content-center" id="goalie">
-                    <div class="column is-12-mobile is-12-tablet is-12-desktop">
+                <div class="container is-flex is-justify-content-center column is-mobile is-10-tablet is-5-desktop"
+                    id="goalie">
+                    <div class="column">
                         <section class="goals column is-flex is-justify-content-center" id="goalsx">
                             <div class="center-content">
                                 <h2>Set your Budgeting Goals!</h2>
@@ -160,7 +197,7 @@
 
                 </div>
 
-                <div class="container is-flex is-justify-content-center column is-12-mobile is-12-tablet is-4-desktop">
+                <div class="container is-flex is-justify-content-center column is-mobile is-10-tablet is-4-desktop">
                     <section class="find-advisor column is-flex is-justify-content-center" id="advisorx">
                         <div class="center-content">
                             <h2>Find an Advisor!</h2>
