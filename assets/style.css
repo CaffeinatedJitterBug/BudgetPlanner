@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    overflow-x: hidden;
+}
+
 :root {
     --ice-light: #65cff7;
     --pane-padding: 5px 42px;
@@ -267,8 +272,8 @@ body {
     /* width: 100px; */
     position: relative;
     height: 10em;
-    /* bottom: 93px;
-    left: -105px; */
+    /* bottom: -155px; */
+    /* left: -105px; */
     border-radius: 20px;
     box-shadow: 35px 36px 26px 21px rgba(0, 0, 0, 0.78);
 }
