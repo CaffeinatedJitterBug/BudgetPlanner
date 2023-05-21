@@ -93,6 +93,11 @@
         width: 30em;
     }
 
+    #advisorx {
+        bottom: 0px;
+        left: 0px;
+    }
+
 }
 
 @media screen and (max-width: 920px) {
