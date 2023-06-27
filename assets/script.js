@@ -1,4 +1,4 @@
-//__________________Global Variables____________________
+//__________________Global Variables___________________________________________________________________________
 let budget = document.getElementById("budget"); //example
 const today = document.getElementById("date"); //AG
 const receiptSubmit = document.getElementById("submit"); //AG
@@ -13,7 +13,7 @@ let myChart = undefined;
 
 let expenseItemArr = JSON.parse(localStorage.getItem("expenseItemArr")) || [];
 let expenseAmountArr = JSON.parse(localStorage.getItem("expenseAmountArr")) || [];
-//__________________Today"s Date________________________
+//__________________Today"s Date_____________________________________________________________________________
 today.textContent = "Today is " + dayjs().format("MMMM D, YYYY"); //AG
 //Call for any local storage data if it exists on page load.
 document.addEventListener("DOMContentLoaded", function () {
@@ -123,8 +123,13 @@ async function fileOCR(event) {
 //Michael Tranquillo && EO
 //set submit button for budget section that takes budget as total and savings as a percentage
 
-
 function budgetInfo() {
+  if (setBudget.value === "" || setSavings.value  === "") {
+    //turns the input box red if the user does not enter a value
+    setBudget.style.borderColor = "red";
+    setSavings.style.borderColor = "red";
+  return;
+  }
   budget = parseFloat(setBudget.value);
   let savings = parseFloat(setSavings.value);
   // savingsAmount = will convert the budget number into the savings percentage from the whole number you chose.
@@ -159,6 +164,13 @@ setBudget.addEventListener("keydown", function (event) {
 function expense() {
   const expenseItem = document.querySelector(".expense-item-input");
   const expenseAmount = document.querySelector(".expense-amount-input");
+
+  if (expenseItem.value === "" || expenseAmount.value === "") {
+    //turns the input box red if the user does not enter a value and stops the function
+    expenseItem.style.borderColor = "red";
+    expenseAmount.style.borderColor = "red";
+    return;
+  }
   moneySpent += parseFloat(expenseAmount.value);
   // Push the new expense item and amount into the arrays
   expenseItemArr.push(expenseItem.value);
@@ -409,6 +421,8 @@ function mapquestRadiusSearch(apiKey, location) { /*EO*/
         const modalAdvisorAddress = document.getElementById("modalAdvisorAddress");
         const modalAdvisorPhone = document.getElementById("modalAdvisorPhone");
         const modalCloseBtn = document.getElementById("closeAdvisor");
+
+        
 
         for (let i = 0; i < searchData.searchResults.length; i++) {
           const result = searchData.searchResults[i].name;
